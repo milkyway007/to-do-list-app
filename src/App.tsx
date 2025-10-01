@@ -2,7 +2,6 @@ import './App.css'
 import VerticalMenu from './components/verticalMenu/VerticalMenu'
 
 function App() {
-
   return (
     <>
       <div id="app-layout" className="columns">

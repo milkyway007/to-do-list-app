@@ -2,7 +2,7 @@ import VerticalMenuList from './VerticalMenuList'
 
 function VerticalMenu() {
   return (
-    <aside className="menu has-background-white-ter" >
+    <aside className="menu" >
       <VerticalMenuList />
     </aside>
   )

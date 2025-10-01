@@ -1,7 +1,5 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+export type MenuListItemName = 'Add task' | 'Search' | 'Today' | 'Upcoming' | 'Completed' | 'Tags';
 
 export interface MenuListItem {
-  id: string;
-  iconProps: IconProp;
-  itemName: string;
+  itemName: MenuListItemName;
 }
