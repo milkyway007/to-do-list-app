@@ -1,6 +1,5 @@
 import './App.css'
 import VerticalMenu from './components/verticalMenu/VerticalMenu'
-import 'bulma/css/bulma.css';
 
 function App() {
 

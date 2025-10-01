@@ -1,13 +1,22 @@
-interface MenuListItem {
-  iconClass: string;
-  name: string;
-}
+import { type MenuListItem } from "../types/types";
 
 export const mainMenuListItems: MenuListItem[] = [
-    {iconClass:'', name: 'Add task'},
-    {iconClass:'', name: 'Search'},
-    {iconClass:'', name: 'Today'},
-    {iconClass:'', name: 'Upcoming'},
-    {iconClass:'', name: 'Completed'},
-    {iconClass:'', name: 'Labels'}
+  {
+    itemName: 'Add task'
+  },
+  {
+    itemName: 'Search'
+  },
+  {
+    itemName: 'Today'
+  },
+  {
+    itemName: 'Upcoming'
+  },
+  {
+    itemName: 'Completed'
+  },
+  {
+    itemName: 'Tags'
+  }
 ];
