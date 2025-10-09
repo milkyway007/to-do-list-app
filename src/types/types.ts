@@ -1,5 +1,11 @@
-export type MenuListItemName = 'Add task' | 'Search' | 'Today' | 'Upcoming' | 'Completed' | 'Tags';
+export type MenuListItemName =
+	| 'Add task'
+	| 'Search'
+	| 'Today'
+	| 'Upcoming'
+	| 'Completed'
+	| 'Tags';
 
 export interface MenuListItem {
-  itemName: MenuListItemName;
+	itemName: MenuListItemName;
 }

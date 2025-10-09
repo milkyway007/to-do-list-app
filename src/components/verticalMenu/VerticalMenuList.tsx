@@ -1,24 +1,29 @@
-import VerticalMenuListLabel from './VerticalMenuListLabel'
-import VerticalMenuListItem from './VerticalMenuListItem'
-import { mainMenuListItems } from '../../constnants/constants'
-import type { MenuListItem } from "../../types/types";
+import type { MenuListItem } from '../../types/types';
+import VerticalMenuListItem from './VerticalMenuListItem';
+import VerticalMenuListLabel from './VerticalMenuListLabel';
 
+import { mainMenuListItems } from '../../constnants/constants';
 
-
-function VerticalMenuList() {
-  return (
-    <>
-      <VerticalMenuListLabel />
-      <ul className="menu-list">
-        {
-          mainMenuListItems.map((item: MenuListItem) => (
-            <li key={item.itemName}>
-              <VerticalMenuListItem {...item} />
-            </li>
-          ))}
-      </ul>
-    </>
-  )
+/**
+ * @returns Returns a VerticalMenuList component.
+ */
+function VerticalMenuList()
+{
+	return (
+		<>
+			<VerticalMenuListLabel />
+			<ul className={'menu-list'}>
+				{mainMenuListItems.map((item: MenuListItem,) =>
+				{
+					return (
+						<li key={item.itemName}>
+							<VerticalMenuListItem {...item} />
+						</li>
+					);
+				},)}
+			</ul>
+		</>
+	);
 }
 
-export default VerticalMenuList
+export default VerticalMenuList;

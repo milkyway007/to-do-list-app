@@ -1,7 +1,9 @@
-function VerticalMenuListLabel() {
-  return (
-    <p className="menu-label">{}</p>
-  )
+/**
+ * @returns Returns a VerticalMenuListLabel icon.
+ */
+function VerticalMenuListLabel()
+{
+	return <p className={'menu-label'}>{}</p>;
 }
 
-export default VerticalMenuListLabel
+export default VerticalMenuListLabel;

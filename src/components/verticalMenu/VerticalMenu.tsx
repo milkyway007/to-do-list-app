@@ -1,11 +1,15 @@
-import VerticalMenuList from './VerticalMenuList'
+import VerticalMenuList from './VerticalMenuList';
 
-function VerticalMenu() {
-  return (
-    <aside className="menu" >
-      <VerticalMenuList />
-    </aside>
-  )
+/**
+ * @returns Returns a VerticalMenu component.
+ */
+function VerticalMenu()
+{
+	return (
+		<aside className={'menu'}>
+			<VerticalMenuList />
+		</aside>
+	);
 }
 
-export default VerticalMenu
+export default VerticalMenu;

@@ -1,23 +1,420 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import importPlugin from 'eslint-plugin-import';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import jsdoc from 'eslint-plugin-jsdoc';
+import stylistic from '@stylistic/eslint-plugin';
 
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-  },
-])
+	globalIgnores(['dist']),
+	eslintConfigPrettier,
+	{
+		files: ['**/*.{ts,tsx}'],
+		extends: [
+			js.configs.recommended,
+			tseslint.configs.recommended,
+			reactHooks.configs['recommended-latest'],
+			reactRefresh.configs.vite,
+		],
+		languageOptions: {
+			ecmaVersion: 2020,
+			globals: globals.browser,
+		},
+		plugins: {
+			'simple-import-sort': simpleImportSort,
+			import: importPlugin,
+			jsdoc: jsdoc,
+			'@stylistic': stylistic,
+		},
+		rules: {
+			'simple-import-sort/imports': [
+				'error',
+				{
+					groups: [
+						['^react', '^@?\\w'],
+						['^bulma/(.*)$'],
+						['^@fortawesome/(.*)$'],
+						['^.*/services/.*$'],
+						['^.*/model/.*$'],
+						['^.*/utils/.*$'],
+						['^.*/constants/.*$'],
+						['^.*/components/.*$'],
+						[
+							'^(?!.*(services|model|utils|constants|components|.module.css).*)[./].*',
+						],
+						['^[./]'],
+						['^(.*).module.css$'],
+					],
+				},
+			],
+			'simple-import-sort/exports': 'error',
+			'accessor-pairs': 'error',
+			'array-bracket-newline': ['error', { multiline: true }],
+			'array-bracket-spacing': ['error', 'never'],
+			'array-callback-return': 'error',
+			'array-element-newline': 'off',
+			'arrow-body-style': ['error', 'always'],
+			'arrow-parens': 'error',
+			'arrow-spacing': 'error',
+			'block-scoped-var': 'error',
+			'block-spacing': ['error', 'always'],
+			'callback-return': 'error',
+			camelcase: [
+				'error',
+				{
+					properties: 'never',
+				},
+			],
+			'capitalized-comments': 'warn',
+			'class-methods-use-this': 'error',
+			complexity: 'error',
+			'computed-property-spacing': 'error',
+			'consistent-return': 'error',
+			'consistent-this': 'error',
+			curly: 'error',
+			'default-case': 'warn',
+			// "default-case-last": "error",
+			// "default-param-last": "error",
+			'dot-location': ['error', 'property'],
+			'dot-notation': 'error',
+			eqeqeq: 'error',
+			'func-call-spacing': ['warn', 'never'],
+			'func-name-matching': 'error',
+			'func-names': 0,
+			'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+			'function-paren-newline': 'off',
+			'generator-star-spacing': 'error',
+			'global-require': 'error',
+			// "grouped-accessor-pairs": "error",
+			'guard-for-in': 'error',
+			'handle-callback-err': 'error',
+			'id-blacklist': 'error',
+			'id-length': ['error', { exceptions: ['_'] }],
+			'id-match': 'error',
+			'implicit-arrow-linebreak': ['error', 'beside'],
+			'init-declarations': 'off',
+			'key-spacing': 'error',
+			'line-comment-position': 'off',
+			'linebreak-style': ['error', 'unix'],
+			'lines-around-directive': 'error',
+			'max-classes-per-file': ['error', 3],
+			'max-depth': 'error',
+			'max-lines': 'error',
+			'max-lines-per-function': ['error', 150],
+			'max-nested-callbacks': 'error',
+			'max-params': ['error', { max: 6 }],
+			'max-statements': ['error', { max: 15 }],
+			'max-statements-per-line': 'error',
+			'multiline-comment-style': 'error',
+			'multiline-ternary': ['error', 'always'],
+			'new-cap': 'error',
+			'new-parens': 'error',
+			'newline-after-var': 'error',
+			'newline-per-chained-call': 'error',
+			'no-alert': 'off',
+			'no-array-constructor': 'error',
+			'no-await-in-loop': 'error',
+			'no-bitwise': 'error',
+			'no-buffer-constructor': 'error',
+			'no-caller': 'error',
+			'no-catch-shadow': 'error',
+			'no-confusing-arrow': 'error',
+			'no-console': 'off',
+			// "no-constructor-return": "error",
+			'no-continue': 'error',
+			'no-div-regex': 'error',
+			'no-duplicate-imports': 'error',
+			'no-dupe-class-members': 'error',
+			'no-else-return': 'error',
+			'no-empty-function': 'error',
+			'no-eq-null': 'error',
+			'no-eval': 'error',
+			'no-extend-native': 0,
+			'no-extra-bind': 'error',
+			'no-extra-label': 'error',
+			'no-floating-decimal': 'error',
+			'no-implicit-coercion': 'error',
+			'no-implicit-globals': 'error',
+			'no-implied-eval': 'error',
+			'no-inline-comments': 'off',
+			'no-invalid-this': 'off',
+			'no-iterator': 'error',
+			'no-label-var': 'error',
+			'no-labels': 'error',
+			'no-lone-blocks': 'error',
+			'no-lonely-if': 'error',
+			'no-loop-func': 'error',
+			'no-magic-numbers': [
+				'warn',
+				{
+					ignoreArrayIndexes: true,
+					ignore: [
+						0, 1, 3, 2, 4, 5, 6, 7, 8, 9, 10, -1, -2, -3, -4, -5, -6, -7, -8,
+						-9, -10,
+					],
+				},
+			],
+			'no-mixed-operators': 'off',
+			'no-mixed-requires': 'error',
+			'no-multi-assign': 'error',
+			'no-multi-str': 'error',
+			'no-native-reassign': 'error',
+			'no-negated-condition': 'error',
+			'no-negated-in-lhs': 'error',
+			'no-nested-ternary': 'error',
+			'no-new': 'error',
+			'no-new-func': 'error',
+			'no-new-object': 'error',
+			'no-new-require': 'error',
+			'no-new-wrappers': 'error',
+			'no-octal-escape': 'error',
+			'no-param-reassign': 'off',
+			'no-path-concat': 'error',
+			'no-plusplus': 'off',
+			'no-process-env': 'off',
+			'no-process-exit': 'error',
+			'no-proto': 'error',
+			// "no-restricted-exports": "error",
+			'no-restricted-globals': 'error',
+			'no-restricted-imports': 'error',
+			'no-restricted-modules': 'error',
+			'no-restricted-properties': 'error',
+			'no-restricted-syntax': 'error',
+			'no-return-assign': 'error',
+			'no-return-await': 'off',
+			'no-script-url': 'error',
+			'no-self-compare': 'error',
+			'no-sequences': 'error',
+			'no-shadow': 'off',
+			'@typescript-eslint/no-shadow': ['warn'],
+			'no-spaced-func': 'error',
+			'no-sync': 'error',
+			'no-template-curly-in-string': 'error',
+			'no-ternary': 'off',
+			'no-throw-literal': 'error',
+			'no-undef-init': 'error',
+			'no-undefined': 'off',
+			'no-underscore-dangle': 'off',
+			'no-unmodified-loop-condition': 'error',
+			'no-unneeded-ternary': 'error',
+			'no-unused-expressions': 'off',
+			'no-use-before-define': 'error',
+			// "no-useless-backreference": "error",
+			'no-useless-call': 'error',
+			'no-useless-computed-key': 'error',
+			'no-useless-concat': 'error',
+			'no-useless-constructor': 'error',
+			'no-useless-rename': 'error',
+			'no-useless-return': 'error',
+			'no-var': 'error',
+			'no-void': 'error',
+			'no-warning-comments': 'error',
+			'no-whitespace-before-property': 'error',
+			'nonblock-statement-body-position': 'error',
+			'object-curly-spacing': ['error', 'always'],
+			'object-property-newline': 'error',
+			'object-shorthand': 'error',
+			'one-var': ['warn', 'never'],
+			'one-var-declaration-per-line': 'error',
+			'operator-assignment': 'error',
+			'operator-linebreak': ['error'],
+			'padding-line-between-statements': [
+				'error',
+				{
+					blankLine: 'always',
+					prev: ['const', 'let', 'var'],
+					next: '*',
+				},
+				{
+					blankLine: 'any',
+					prev: ['const', 'let', 'var'],
+					next: ['const', 'let', 'var'],
+				},
+				{ blankLine: 'always', prev: '*', next: 'return' },
+			],
+			'prefer-arrow-callback': 'error',
+			'prefer-const': 'error',
+			'prefer-destructuring': 'warn',
+			// "prefer-exponentiation-operator": "error",
+			'prefer-named-capture-group': 0,
+			'prefer-numeric-literals': 'error',
+			'prefer-object-spread': 'error',
+			'prefer-promise-reject-errors': 'error',
+			'prefer-reflect': 'error',
+			// "prefer-regex-literals": "error",
+			'prefer-rest-params': 'error',
+			'prefer-spread': 'error',
+			'prefer-template': 'warn',
+			'quote-props': ['error', 'as-needed'],
+			quotes: [
+				'error',
+				'single',
+				{ allowTemplateLiterals: true, avoidEscape: true },
+			],
+			radix: 'error',
+			'require-atomic-updates': 'error',
+			'require-await': 'error',
+			'require-jsdoc': 0,
+			'require-unicode-regexp': 0,
+			'rest-spread-spacing': 'error',
+			'sort-imports': [
+				'error',
+				{
+					ignoreCase: true,
+					ignoreDeclarationSort: true,
+					ignoreMemberSort: false,
+					memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple'],
+					allowSeparatedGroups: true,
+				},
+			],
+			'sort-keys': 'off',
+			'sort-vars': 'off',
+			'space-before-blocks': ['error', 'always'],
+			'space-before-function-paren': ['error', 'never'],
+			'space-in-parens': 'error',
+			'space-infix-ops': 'error',
+			'space-unary-ops': 'off',
+			'spaced-comment': 'error',
+			strict: 'error',
+			'switch-colon-spacing': 'error',
+			'symbol-description': 'error',
+			'template-curly-spacing': ['error', 'never'],
+			'template-tag-spacing': ['error', 'always'],
+			'unicode-bom': 'error',
+			'vars-on-top': 'error',
+			'wrap-iife': 'error',
+			'wrap-regex': 'error',
+			'yield-star-spacing': 'error',
+			yoda: 'error',
+			'no-mixed-spaces-and-tabs': 'error',
+			'no-unexpected-multiline': 'error',
+			'@typescript-eslint/no-var-requires': 0,
+			'@typescript-eslint/no-non-null-assertion': 0,
+			'@typescript-eslint/no-restricted-types': 'warn',
+			'jsdoc/check-access': 1, // Recommended
+			'jsdoc/check-alignment': 1, // Recommended
+			// "jsdoc/check-examples": 1, // Deprecated and not for ESLint >= 8
+			'jsdoc/check-indentation': 1,
+			'jsdoc/check-line-alignment': 1,
+			'jsdoc/check-param-names': 1, // Recommended
+			'jsdoc/check-property-names': 1, // Recommended
+			'jsdoc/check-syntax': 1,
+			'jsdoc/check-tag-names': 1, // Recommended
+			'jsdoc/check-template-names': 1,
+			'jsdoc/check-types': 1, // Recommended
+			'jsdoc/check-values': 1, // Recommended
+			'jsdoc/convert-to-jsdoc-comments': 1,
+			'jsdoc/empty-tags': 1, // Recommended
+			'jsdoc/escape-inline-tags': 1, // Recommended for TS configs
+			'jsdoc/implements-on-classes': 1, // Recommended
+			'jsdoc/imports-as-dependencies': 1,
+			'jsdoc/informative-docs': 1,
+			'jsdoc/lines-before-block': 1,
+			'jsdoc/match-description': 1,
+			'jsdoc/match-name': 0,
+			'jsdoc/multiline-blocks': 1, // Recommended
+			'jsdoc/no-bad-blocks': 1,
+			'jsdoc/no-blank-block-descriptions': 1,
+			'jsdoc/no-defaults': 1, // Recommended
+			'jsdoc/no-missing-syntax': 0,
+			'jsdoc/no-multi-asterisks': 1, // Recommended
+			'jsdoc/no-restricted-syntax': 0,
+			'jsdoc/no-types': 1, // Recommended for TS configs
+			'jsdoc/no-undefined-types': 1, // Recommended for non-TS configs
+			// 'jsdoc/rejct-any-type': 1, // Recommended
+			'jsdoc/reject-function-type': 1, // Recommended
+			'jsdoc/require-asterisk-prefix': 1,
+			'jsdoc/require-description': 0,
+			'jsdoc/require-description-complete-sentence': 1,
+			'jsdoc/require-example': 0,
+			'jsdoc/require-file-overview': 0,
+			'jsdoc/require-hyphen-before-param-description': 1,
+			'jsdoc/require-jsdoc': 1, // Recommended
+			'jsdoc/require-next-description': 1,
+			'jsdoc/require-next-type': 1, // Recommended
+			'jsdoc/require-param-description': 1, // Recommended
+			'jsdoc/require-param-name': 1, // Recommended
+			'jsdoc/require-param-type': 0, // Recommended in non-TS configs
+			'jsdoc/require-param': 1, // Recommended
+			'jsdoc/require-property-description': 1, // Recommended
+			'jsdoc/require-property-name': 1, // Recommended
+			'jsdoc/require-property-type': 1, // Recommended in non-TS configs
+			'jsdoc/require-property': 1, // Recommended
+			'jsdoc/require-returns-check': 1, // Recommended
+			'jsdoc/require-returns-description': 1, // Recommended
+			'jsdoc/require-returns-type': 0, // Recommended in non-TS configs
+			'jsdoc/require-returns': 1, // Recommended
+			'jsdoc/require-template': 1,
+			'jsdoc/require-template-description': 1,
+			'jsdoc/require-throws': 0,
+			'jsdoc/require-throws-description': 1,
+			'jsdoc/require-throws-type': 1, // Recommended
+			'jsdoc/require-yields-check': 1, // Recommended
+			'jsdoc/require-yields-description': 1,
+			'jsdoc/require-yields-type': 1, // Recommended
+			'jsdoc/require-yields': 1, // Recommended
+			'jsdoc/sort-tags': 1,
+			'jsdoc/tag-lines': 1, // Recommended
+			'jsdoc/text-escaping': 0,
+			'jsdoc/type-formatting': 1,
+			'jsdoc/valid-types': 1, // Recommended
+			'@stylistic/block-spacing': ['error', 'always'],
+			'@stylistic/brace-style': ['error', 'allman'],
+			'@stylistic/comma-dangle': [
+				'error',
+				{
+					arrays: 'always',
+					objects: 'always',
+					imports: 'never',
+					exports: 'never',
+					functions: 'always',
+					importAttributes: 'never',
+					dynamicImports: 'never',
+					enums: 'always',
+					generics: 'always',
+					tuples: 'always',
+				},
+			],
+			'@stylistic/comma-spacing': ['error', { before: false, after: true }],
+			'@stylistic/comma-style': ['error', 'last'],
+			'@stylistic/curly-newline': 'error',
+			'@stylistic/eol-last': ['error', 'always'],
+			'@stylistic/function-call-argument-newline': ['error', 'consistent'],
+			'@stylistic/function-call-spacing': ['error', 'never'],
+			'@stylistic/indent': ['error', 'tab'],
+			'@stylistic/jsx-child-element-spacing': 'error',
+			'@stylistic/jsx-closing-bracket-location': ['error', 'tag-aligned'],
+			'@stylistic/jsx-curly-brace-presence': [
+				'error',
+				{ props: 'always', children: 'always' },
+			],
+			'@stylistic/semi-style': ['error', 'last'],
+			'@stylistic/semi-spacing': 'error',
+			'@stylistic/semi': ['error', 'always'],
+			'@stylistic/quotes': ['error', 'single'],
+			'@stylistic/no-trailing-spaces': 'error',
+			'@stylistic/no-multiple-empty-lines': 'error',
+			'@stylistic/no-multi-spaces': 'error',
+			'@stylistic/no-extra-semi': 'error',
+			'@stylistic/no-extra-parens': 'error',
+			'@stylistic/max-len': ['error', { code: 80 }],
+			'@stylistic/lines-between-class-members': ['error', 'always'],
+			'@stylistic/keyword-spacing': ['error', { before: true, after: true }],
+			'@stylistic/object-curly-newline': [
+				'error',
+				{
+					ObjectExpression: 'always',
+					ObjectPattern: 'never',
+					ImportDeclaration: 'never',
+					ExportDeclaration: 'never',
+				},
+			],
+			'@stylistic/jsx-quotes': ['error', 'prefer-single'],
+		},
+	},
+]);
