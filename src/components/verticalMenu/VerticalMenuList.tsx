@@ -13,14 +13,14 @@ function VerticalMenuList()
 		<>
 			<VerticalMenuListLabel />
 			<ul className={'menu-list'}>
-				{mainMenuListItems.map((item: MenuListItem,) =>
+				{mainMenuListItems.map((item: MenuListItem) =>
 				{
 					return (
 						<li key={item.itemName}>
 							<VerticalMenuListItem {...item} />
 						</li>
 					);
-				},)}
+				})}
 			</ul>
 		</>
 	);
