@@ -19,12 +19,6 @@ export default defineConfig([
 	jsdoc({
 		config: 'flat/recommended',
 		rules: {
-			'jsdoc/check-values': [
-				'error',
-				{
-					allowedLicenses: ['MIT', 'ISC'],
-				},
-			],
 			'jsdoc/require-returns-type': 0,
 			'jsdoc/require-param-type': 0,
 		},
