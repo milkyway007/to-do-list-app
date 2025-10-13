@@ -1,15 +1,8 @@
-import {
-  faCalendarDay,
-  faCalendarDays,
-  faCircleCheck,
-  faMagnifyingGlass,
-  faPlus,
-  faTags,
-  type IconDefinition,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import type { MenuListItem } from "../../types/types";
+import getIcon from '../../services/iconSelector';
+
+import { type MenuListItem } from '../../model/interfaces';
 
 /**
  * @param root0 - An object presenting menu list item properties.
@@ -17,33 +10,10 @@ import type { MenuListItem } from "../../types/types";
  * @returns Returns a VerticalMenuListItem component.
  */
 function VerticalMenuListItem({ itemName }: MenuListItem) {
-  /**
-   * @param name - Menu list item header.
-   * @returns Returns a VerticalMenuListItem icon.
-   */
-  function getIcon(name: string): IconDefinition {
-    switch (name) {
-      case "Add task":
-        return faPlus;
-      case "Search":
-        return faMagnifyingGlass;
-      case "Today":
-        return faCalendarDay;
-      case "Upcoming":
-        return faCalendarDays;
-      case "Completed":
-        return faCircleCheck;
-      case "Tags":
-        return faTags;
-      default:
-        throw new Error(`No icon found for "${name}"`);
-    }
-  }
-
   return (
     <>
       <button className="button is-transparent has-no-border">
-        <span className={"icon-text"}>
+        <span className={'icon-text'}>
           <span>
             <FontAwesomeIcon icon={getIcon(itemName)} />
           </span>
