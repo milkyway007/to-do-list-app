@@ -1,22 +1,22 @@
-import { type MenuListItem } from '../model/interfaces';
+import { type IconButtonProps } from '../model/interfaces';
 
-export const mainMenuListItems: MenuListItem[] = [
-  {
-    itemName: 'Add task',
-  },
-  {
-    itemName: 'Search',
-  },
-  {
-    itemName: 'Today',
-  },
-  {
-    itemName: 'Upcoming',
-  },
-  {
-    itemName: 'Completed',
-  },
-  {
-    itemName: 'Tags',
-  },
+export const mainMenuListItems: IconButtonProps[] = [
+	{
+		name: 'Add task',
+	},
+	{
+		name: 'Search',
+	},
+	{
+		name: 'Today',
+	},
+	{
+		name: 'Upcoming',
+	},
+	{
+		name: 'Completed',
+	},
+	{
+		name: 'Tags',
+	},
 ];

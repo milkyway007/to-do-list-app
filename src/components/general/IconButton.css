@@ -1,0 +1,12 @@
+.has-no-border {
+	border-style: none !important;
+}
+
+.is-transparent {
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.is-transparent:hover {
+	background-color: hsl(0, 0%, 86%) !important;
+}

@@ -1,9 +1,9 @@
-import { type MenuListItem } from '../../model/interfaces';
+import { type IconButtonProps } from '../../model/interfaces';
 
 import { mainMenuListItems } from '../../constants/constants';
 
-import VerticalMenuListItem from './VerticalMenuListButton';
 import VerticalMenuListLabel from './VerticalMenuListLabel';
+import IconButton from '../general/IconButton';
 
 /**
  * @returns Returns a VerticalMenuList component.
@@ -21,14 +21,14 @@ function VerticalMenuList() {
 		<>
 			<VerticalMenuListLabel />
 			<ul className={'menu-list'}>
-				{mainMenuListItems.map((item: MenuListItem) => {
+				{mainMenuListItems.map((item: IconButtonProps) => {
 					return (
 						<li
-							key={item.itemName}
+							key={item.name}
 							onClick={() => {
-								handleClick(item.itemName);
+								handleClick(item.name);
 							}}>
-							<VerticalMenuListItem {...item} />
+							<IconButton {...item} />
 						</li>
 					);
 				})}

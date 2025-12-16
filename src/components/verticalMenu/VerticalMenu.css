@@ -1,16 +1,3 @@
 .vertical-menu-section {
-  padding: 3rem 1.5rem;
-}
-
-.has-no-border {
-  border-style: none !important;
-}
-
-.menu-list button.is-transparent {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-.menu-list button.is-transparent:hover {
-  background-color: hsl(0, 0%, 86%) !important;
+	padding: 3rem 1.5rem;
 }

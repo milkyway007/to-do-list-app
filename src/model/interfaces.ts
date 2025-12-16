@@ -1,5 +1,5 @@
-import  { type MenuListItemName } from './types';
+import { type IconButtonName } from './types';
 
-export interface MenuListItem {
-  itemName: MenuListItemName;
+export interface IconButtonProps {
+	name: IconButtonName;
 }

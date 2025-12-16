@@ -2,7 +2,7 @@ import eslint from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import { jsdoc } from 'eslint-plugin-jsdoc';
-import reactHooks from 'eslint-plugin-react-hooks';
+import pluginObject from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import tseslint from 'typescript-eslint';
@@ -21,7 +21,6 @@ export default defineConfig([
 	},
 	tseslint.configs.strictTypeChecked,
 	tseslint.configs.stylisticTypeChecked,
-	reactHooks.configs['recommended-latest'],
 	reactRefresh.configs.vite,
 	jsdoc({
 		config: 'flat/recommended',
@@ -47,6 +46,7 @@ export default defineConfig([
 		plugins: {
 			'simple-import-sort': simpleImportSort,
 			import: importPlugin,
+			reactHooks: pluginObject,
 		},
 		rules: {
 			quotes: ['error', 'single'],
@@ -63,10 +63,10 @@ export default defineConfig([
 						['^.*/constants/.*$'],
 						['^.*/components/.*$'],
 						[
-							'^(?!.*(services|model|utils|constants|components|.module.css).*)[./].*',
+							'^(?!.*(services|model|utils|constants|components|module.css).*)[./].*',
 						],
 						['^[./]'],
-						['^(.*).module.css$'],
+						['^(.*)module.css$'],
 					],
 				},
 			],

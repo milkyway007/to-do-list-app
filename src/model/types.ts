@@ -1,7 +1,7 @@
-export type MenuListItemName =
-  | 'Add task'
-  | 'Search'
-  | 'Today'
-  | 'Upcoming'
-  | 'Completed'
-  | 'Tags';
+export type IconButtonName =
+	| 'Add task'
+	| 'Search'
+	| 'Today'
+	| 'Upcoming'
+	| 'Completed'
+	| 'Tags';
