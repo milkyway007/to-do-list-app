@@ -2,8 +2,8 @@ import { type IconButtonProps } from '../../model/interfaces';
 
 import { mainMenuListItems } from '../../constants/constants';
 
-import VerticalMenuListLabel from './VerticalMenuListLabel';
 import IconButton from '../general/IconButton';
+import VerticalMenuListLabel from './VerticalMenuListLabel';
 
 /**
  * @returns Returns a VerticalMenuList component.

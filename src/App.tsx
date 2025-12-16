@@ -1,7 +1,7 @@
+import MainContent from './components/mainContent/MainContent';
 import VerticalMenu from './components/verticalMenu/VerticalMenu';
 
 import './App.css';
-import MainContent from './components/mainContent/MainContent';
 
 /**
  * @returns Returns an App icon.

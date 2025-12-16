@@ -1,4 +1,4 @@
-import TodayTaskList from '../../todayTaskList/TodayTaskList';
+import TodayTaskList from '../todayTaskList/TodayTaskList';
 
 /**
  * @returns Returns a MainContent component.

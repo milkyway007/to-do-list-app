@@ -1,6 +1,6 @@
-import { type IconButtonProps } from '../model/interfaces';
+import { type IconButtonProps } from '../../model/interfaces';
 
-import IconButton from '../components/general/IconButton';
+import IconButton from '../general/IconButton';
 
 import './TodayTaskList.css';
 
