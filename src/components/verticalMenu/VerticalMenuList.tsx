@@ -1,22 +1,21 @@
 import { type IconButtonProps } from '../../model/interfaces';
+import { type ButtonNameType } from '../../model/types';
 
 import { mainMenuListItems } from '../../constants/constants';
 
 import IconButton from '../general/IconButton';
 import VerticalMenuListLabel from './VerticalMenuListLabel';
 
+interface VerticalMenuListProps {
+	buttonOnClick: (buttonName: ButtonNameType) => void;
+}
+
 /**
+ * @param root0 vertical menu list props
+ * @param root0.buttonOnClick button on click function
  * @returns Returns a VerticalMenuList component.
  */
-function VerticalMenuList() {
-	/**
-	 * OnClick event for vertical menu list item.
-	 * @param itemName vertical menu list item header.
-	 */
-	function handleClick(itemName: string): void {
-		console.log(itemName);
-	}
-
+function VerticalMenuList({ buttonOnClick }: VerticalMenuListProps) {
 	return (
 		<>
 			<VerticalMenuListLabel />
@@ -26,7 +25,7 @@ function VerticalMenuList() {
 						<li
 							key={item.name}
 							onClick={() => {
-								handleClick(item.name);
+								buttonOnClick(item.name);
 							}}>
 							<IconButton {...item} />
 						</li>

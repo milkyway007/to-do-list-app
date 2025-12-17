@@ -9,12 +9,14 @@ import './IconButton.css';
 /**
  * @param root0 - An object presenting icon button properties.
  * @param root0.name - icon button name.
+ * @param root0.className - icon button classes.
  * @returns Returns an IconButton component.
  */
-function IconButton({ name }: IconButtonProps) {
+function IconButton({ name, className }: IconButtonProps) {
 	return (
-		<button className="button is-transparent has-no-border icon-button">
-			<span className={'icon-text'}>
+		<button
+			className={`button icon-button has-no-border ${className?.join(' ') ?? ''}`}>
+			<span className="icon-text">
 				<span>
 					<FontAwesomeIcon icon={getIcon(name)} />
 				</span>

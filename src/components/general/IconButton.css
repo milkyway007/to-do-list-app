@@ -1,12 +1,28 @@
-.has-no-border {
-	border-style: none !important;
+.button.has-no-border {
+	border-style: none;
 }
 
-.is-transparent {
-	background-color: transparent !important;
-	box-shadow: none !important;
+button.hover-bg-grey-lighter {
+	box-shadow: none;
 }
 
-.is-transparent:hover {
-	background-color: hsl(0, 0%, 86%) !important;
+button.hover-bg-grey-lighter:not(:hover) {
+	background-color: transparent;
+}
+
+button.hover-bg-grey-lighter:hover {
+	background-color: hsl(0, 0%, 86%);
+}
+
+button.hover-text-danger {
+	box-shadow: none;
+}
+
+button.hover-text-danger:not(:hover) {
+	background-color: transparent;
+}
+
+button.hover-text-danger:hover {
+	background-color: transparent;
+	color: hsl(348, 100%, 61%);
 }

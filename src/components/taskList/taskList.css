@@ -1,0 +1,21 @@
+.today-task-list {
+	padding-top: 3rem;
+}
+
+.today-task-list-body .header {
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.day-data-container {
+	display: flex;
+	gap: 0.2rem;
+}
+
+.day-data-container > div:not(:last-child)::after {
+	content: '•';
+	margin-left: 0.2rem;
+}
