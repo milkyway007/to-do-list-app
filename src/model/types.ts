@@ -1,12 +1,6 @@
-import {
-	type ButtonName,
-	TaskListHeader,
-	Weekday,
-} from '../constants/constants';
+import { type ContextName, TaskListHeader } from '../constants/constants';
 
-export type ButtonNameType = (typeof ButtonName)[keyof typeof ButtonName];
+export type ContextNameType = (typeof ContextName)[keyof typeof ContextName];
 
 export type TaskListHeaderType =
 	(typeof TaskListHeader)[keyof typeof TaskListHeader];
-
-export type WeekdayType = (typeof Weekday)[keyof typeof Weekday];

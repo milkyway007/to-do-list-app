@@ -1,8 +1,8 @@
-.today-task-list {
+.task-list-container {
 	padding-top: 3rem;
 }
 
-.today-task-list-body .header {
+.task-list-body .header {
 	border-bottom: 1px solid #f2f2f2;
 }
 
@@ -18,4 +18,14 @@
 .day-data-container > div:not(:last-child)::after {
 	content: '•';
 	margin-left: 0.2rem;
+}
+
+.content .task-list-body ul,
+.content .task-list-body li {
+	padding: 0;
+	margin: 0;
+}
+
+.task-list-body li::marker {
+	content: none;
 }

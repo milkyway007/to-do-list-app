@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { type ButtonNameType } from './model/types';
+import { type ButtonProps, type Context } from './model/interfaces';
 
-import { ButtonName } from './constants/constants';
+import { ContextName, contexts } from './constants/constants';
 
-import MainContent from './components/mainContent/MainContent';
+import Content from './components/contextHolder/ContextHolder';
 import VerticalMenu from './components/verticalMenu/VerticalMenu';
 
 import './App.css';
@@ -13,16 +13,17 @@ import './App.css';
  * @returns Returns an App icon.
  */
 function App() {
-	const [selectedContent, setSelectedContent] = useState<ButtonNameType>(
-		ButtonName.Today,
+	const [selectedContext, setContextSelected] = useState<Context | undefined>(
+		contexts.find((x) => x.name === ContextName.Today),
 	);
 
 	/**
 	 * OnClick event for a button.
-	 * @param selectedButton button name.
+	 * @param button selected app context.
 	 */
-	function buttonOnClick(selectedButton: ButtonNameType): void {
-		setSelectedContent(selectedButton);
+	function buttonOnClick(button: ButtonProps): void {
+		const context = contexts.find((x) => x.name === button.name);
+		setContextSelected(context);
 	}
 
 	return (
@@ -34,8 +35,8 @@ function App() {
 					<VerticalMenu buttonOnClick={buttonOnClick} />
 				</div>
 				<div className={'column'}>
-					<MainContent
-						mainContent={selectedContent}
+					<Content
+						context={selectedContext}
 						buttonOnClick={buttonOnClick}
 					/>
 				</div>

@@ -1,26 +1,26 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import getIcon from '../../services/iconSelector';
+import select from '../../services/iconSelector';
 
-import { type IconButtonProps } from '../../model/interfaces';
+import { type ButtonProps } from '../../model/interfaces';
 
 import './IconButton.css';
 
 /**
  * @param root0 - An object presenting icon button properties.
- * @param root0.name - icon button name.
- * @param root0.className - icon button classes.
+ * @param root0.buttonName - icon button name.
+ * @param root0.buttonClassName - icon button classes.
  * @returns Returns an IconButton component.
  */
-function IconButton({ name, className }: IconButtonProps) {
+function IconButton({ ...props }: ButtonProps) {
 	return (
 		<button
-			className={`button icon-button has-no-border ${className?.join(' ') ?? ''}`}>
+			className={`button icon-button has-no-border ${props.className?.join(' ') ?? ''}`}>
 			<span className="icon-text">
 				<span>
-					<FontAwesomeIcon icon={getIcon(name)} />
+					<FontAwesomeIcon icon={select(props.name)} />
 				</span>
-				<span>{name}</span>
+				<span>{props.name}</span>
 			</span>
 		</button>
 	);
