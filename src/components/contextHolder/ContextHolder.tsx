@@ -10,7 +10,7 @@ import TaskList from '../taskList/taskList';
  * @param root0.buttonOnClick button on click function
  * @returns Returns a MainContent component.
  */
-function Content({ buttonOnClick, context }: TaskListProps) {
+function ContextHolder({ buttonOnClick, context }: TaskListProps) {
 	return (
 		<div className="columns">
 			<div className="column is-half is-offset-one-quarter">
@@ -27,4 +27,4 @@ function Content({ buttonOnClick, context }: TaskListProps) {
 	);
 }
 
-export default Content;
+export default ContextHolder;
