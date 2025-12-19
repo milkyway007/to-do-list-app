@@ -29,3 +29,37 @@
 .task-list-body li::marker {
 	content: none;
 }
+
+textarea.auto-textarea {
+	border: none;
+	outline: none;
+	resize: none;
+	overflow: hidden;
+	width: 100%;
+	font: inherit;
+	background: transparent;
+	box-shadow: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.box.day-task-form {
+	border: 1px solid hsl(0, 0%, 96%);
+	box-shadow: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.buttons.day-task-form-footer {
+	display: flex;
+	justify-content: flex-end;
+	border-top: 1px solid hsl(0, 0%, 96%);
+}
+
+.day-task-form-block {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+}

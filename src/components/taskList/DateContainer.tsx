@@ -14,7 +14,7 @@ import { type DayDataContainerProps } from '../../model/interfaces';
  */
 function DayDataContainer({ date }: DayDataContainerProps) {
 	return (
-		<div className="header day-data-container has-text-weight-bold pb-1 mb-1">
+		<div className="header day-data-container has-text-weight-bold pb-1 mb-3">
 			<div>
 				{date.getDate()} {convert(date.getMonth())}
 			</div>

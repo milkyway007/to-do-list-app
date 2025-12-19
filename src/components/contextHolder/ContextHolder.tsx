@@ -2,7 +2,7 @@ import { type TaskListProps } from '../../model/interfaces';
 
 import { ContextName } from '../../constants/constants';
 
-import TaskList from '../taskList/taskList';
+import TaskList from '../taskList/TaskList';
 
 /**
  * @param root0 main content props
@@ -10,17 +10,14 @@ import TaskList from '../taskList/taskList';
  * @param root0.buttonOnClick button on click function
  * @returns Returns a MainContent component.
  */
-function ContextHolder({ buttonOnClick, context }: TaskListProps) {
+function ContextHolder({ context }: TaskListProps) {
 	return (
 		<div className="columns">
 			<div className="column is-half is-offset-one-quarter">
 				{context &&
 					(context.name === ContextName.Today ||
 						context.name === ContextName.Upcoming) && (
-						<TaskList
-							buttonOnClick={buttonOnClick}
-							context={context}
-						/>
+						<TaskList context={context} />
 					)}
 			</div>
 		</div>

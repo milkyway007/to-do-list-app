@@ -35,14 +35,19 @@ export interface ButtonOnClickProps {
 	buttonOnClick: (button: ButtonProps) => void;
 }
 
-export interface TaskListProps extends ButtonOnClickProps {
+export interface TaskListProps {
 	context: Context | undefined;
+}
+
+export interface DayTaskListProps {
+	day: Day;
 }
 
 export interface DayDataContainerProps {
 	date: Date;
 }
 
-export interface DayTaskListProps
-	extends ButtonOnClickProps,
-		DayDataContainerProps {}
+export interface DayTaskFormProps {
+	isFormHidden: boolean;
+	buttonOnClick: (isFormHidden: boolean) => void;
+}

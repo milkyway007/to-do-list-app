@@ -16,7 +16,7 @@ import './TaskList.css';
  * @param root0.context selected app context
  * @returns Returns a TodayTaskList component.
  */
-function TaskListContainer({ buttonOnClick, context }: TaskListProps) {
+function TaskListContainer({ context }: TaskListProps) {
 	const addTaskButton: ButtonProps | undefined = buttons.find(
 		(x) => x.name === ContextName.AddTask,
 	);
@@ -28,7 +28,7 @@ function TaskListContainer({ buttonOnClick, context }: TaskListProps) {
 	return (
 		<>
 			{context && (
-				<div className="content task-list-container">
+				<div className="content block task-list-container">
 					<div className="task-list-header">
 						<h2 className="header mb-5">{context.name}</h2>
 					</div>
@@ -38,10 +38,7 @@ function TaskListContainer({ buttonOnClick, context }: TaskListProps) {
 								{context.taskList.days.map((day: Day) => {
 									return (
 										<li key={day.id}>
-											<DayTaskList
-												date={day.date}
-												buttonOnClick={buttonOnClick}
-											/>
+											<DayTaskList day={day} />
 										</li>
 									);
 								})}
