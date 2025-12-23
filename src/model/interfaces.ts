@@ -1,3 +1,5 @@
+import { type ReactNode } from 'react';
+
 import {
 	type ButtonNameType,
 	type ContextNameType,
@@ -18,7 +20,7 @@ export interface IconButtonProps {
 
 export interface VerticalMenuButtonProps extends IconButtonProps {
 	order: number;
-	context: Context | undefined;
+	contextName: ContextNameType;
 }
 
 export interface Task {
@@ -39,8 +41,8 @@ export interface TaskList {
 	days: Day[];
 }
 
-export interface VerticalMenuButtonClickedProps {
-	buttonClicked: (button: VerticalMenuButtonProps) => void;
+export interface ParentComponentProps {
+	children: ReactNode;
 }
 
 export interface ContextHolderProps {

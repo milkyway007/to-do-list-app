@@ -1,24 +1,14 @@
-import { type ContextHolderProps } from '../../model/interfaces';
-
-import { ContextName } from '../../constants/constants';
-
-import TaskList from '../taskList/TaskList';
+import { type ParentComponentProps } from '../../model/interfaces';
 
 /**
  * @returns Returns a ContextHolder component;
- * @param root0 ContextHolderProps;
- * @param root0.context Selected app context.
+ * @param root0 ParentComponentProps;
+ * @param root0.children The content inside the opening and closing tags of a parent component.
  */
-function ContextHolder({ context }: ContextHolderProps) {
+function ContextHolder({ children }: ParentComponentProps) {
 	return (
 		<div className="columns">
-			<div className="column is-half is-offset-one-quarter">
-				{context &&
-					(context.name === ContextName.Today ||
-						context.name === ContextName.Upcoming) && (
-						<TaskList context={context} />
-					)}
-			</div>
+			<div className="column is-half is-offset-one-quarter">{children}</div>
 		</div>
 	);
 }

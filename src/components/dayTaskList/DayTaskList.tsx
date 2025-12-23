@@ -6,7 +6,7 @@ import AddTaskButton from './AddTaskButton';
 import DateContainer from './DateContainer';
 import DayTaskForm from './DayTaskForm';
 
-import './TaskList.css';
+import './DayTaskList.css';
 
 /**
  * @returns DayTaskList component;
@@ -20,7 +20,7 @@ function DayTaskList({ day }: DayTaskListProps) {
 	 * Toggles the IsAdding state.
 	 */
 	function toggleIsAdding(): void {
-		setIsAdding(!isAdding);
+		setIsAdding((adding) => !adding);
 	}
 
 	let content = undefined;

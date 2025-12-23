@@ -1,3 +1,41 @@
 #app {
 	height: 100%;
 }
+
+.task-list-container {
+	padding-top: 3rem;
+}
+
+.task-list-body .header {
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.content .task-list-body ul,
+.content .task-list-body li {
+	padding: 0;
+	margin: 0;
+}
+
+.task-list-body li::marker {
+	content: none;
+}
+
+.box.day-task-form {
+	border: 1px solid hsl(0, 0%, 96%);
+	box-shadow: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.buttons.day-task-form-footer {
+	display: flex;
+	justify-content: flex-end;
+	border-top: 1px solid hsl(0, 0%, 96%);
+}
+
+.day-task-form-block {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5rem;
+}
