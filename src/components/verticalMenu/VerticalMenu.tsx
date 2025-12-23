@@ -1,4 +1,4 @@
-import { type ButtonOnClickProps } from '../../model/interfaces';
+import { type VerticalMenuButtonClickedProps } from '../../model/interfaces';
 
 import VerticalMenuList from './VerticalMenuList';
 
@@ -6,15 +6,15 @@ import './VerticalMenu.css';
 import '../general/IconButton.css';
 
 /**
- * @param root0 vertical menu props
- * @param root0.buttonOnClick button on click function
- * @returns Returns a VerticalMenu component.
+ * @returns Returns a VerticalMenu component;
+ * @param root0 VerticalMenuButtonClickedProps;
+ * @param root0.buttonClicked Vertical menu button component clicked function.
  */
-function VerticalMenu({ buttonOnClick }: ButtonOnClickProps) {
+function VerticalMenu({ buttonClicked }: VerticalMenuButtonClickedProps) {
 	return (
-		<aside className={'menu'}>
+		<aside className="menu">
 			<section className="vertical-menu-section">
-				<VerticalMenuList buttonOnClick={buttonOnClick} />
+				<VerticalMenuList buttonClicked={buttonClicked} />
 			</section>
 		</aside>
 	);

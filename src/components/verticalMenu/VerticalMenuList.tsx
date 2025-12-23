@@ -1,29 +1,27 @@
 import {
-	type ButtonOnClickProps,
-	type ButtonProps,
+	type VerticalMenuButtonClickedProps,
+	type VerticalMenuButtonProps,
 } from '../../model/interfaces';
 
-import { buttons } from '../../constants/constants';
+import { verticalMenuButtons } from '../../constants/constants';
 
 import IconButton from '../general/IconButton';
-import VerticalMenuListLabel from './VerticalMenuListLabel';
 
 /**
- * @param root0 vertical menu list props
- * @param root0.buttonOnClick button on click function
- * @returns Returns a VerticalMenuList component.
+ * @returns Returns a VerticalMenuList component;
+ * @param root0 VerticalMenuButtonClickedProps;
+ * @param root0.buttonClicked Vertical menu button component clicked function.
  */
-function VerticalMenuList({ buttonOnClick }: ButtonOnClickProps) {
+function VerticalMenuList({ buttonClicked }: VerticalMenuButtonClickedProps) {
 	return (
 		<>
-			<VerticalMenuListLabel />
-			<ul className={'menu-list'}>
-				{buttons.map((item: ButtonProps) => {
+			<ul className="menu-list">
+				{verticalMenuButtons.map((item: VerticalMenuButtonProps) => {
 					return (
 						<li
 							key={item.name}
 							onClick={() => {
-								buttonOnClick(item);
+								buttonClicked(item);
 							}}>
 							<IconButton {...item} />
 						</li>

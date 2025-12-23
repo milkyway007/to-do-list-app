@@ -1,19 +1,15 @@
-import { type DayTaskFormProps } from '../../model/interfaces';
+import { type AddDayTaskProps } from '../../model/interfaces';
 
 /**
- * @returns DayTaskForm component
- * @param root0 DayTaskFormProps
- * @param root0.isFormHidden Determines if the DayTaskForm component is hidden from the screen:
- * if the DayTaskForm component is hidden, then AddTaskButton is visible and vice versa.
- * @param root0.buttonOnClick cancel button on click function
+ * @returns DayTaskForm component;
+ * @param root0 AddDayTaskProps;
+ * @param root0.toggleIsAdding Toggles IsAdding property;
+ * @param root0.isAdding Determines if the DayTaskList component is in IsAdding state.
  */
-function DayTaskForm({ isFormHidden, buttonOnClick }: DayTaskFormProps) {
-	console.log(2);
-	console.log(isFormHidden);
-
+function DayTaskForm({ isAdding, toggleIsAdding }: AddDayTaskProps) {
 	return (
 		<form
-			className={`box day-task-form m-0 p-0 ${isFormHidden ? 'is-hidden' : ''}`}>
+			className={`box day-task-form m-0 p-0 ${!isAdding ? 'is-hidden' : ''}`}>
 			<div className="day-task-form-block m-4">
 				<textarea
 					className="textarea auto-textarea p-0"
@@ -28,9 +24,7 @@ function DayTaskForm({ isFormHidden, buttonOnClick }: DayTaskFormProps) {
 				<button
 					type="button"
 					className="button is-light right"
-					onClick={() => {
-						buttonOnClick(!isFormHidden);
-					}}>
+					onClick={toggleIsAdding}>
 					Cancel
 				</button>
 				<button

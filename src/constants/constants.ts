@@ -1,11 +1,20 @@
 import {
-	type ButtonProps,
 	type Context,
 	type TaskList,
+	type VerticalMenuButtonProps,
 } from '../model/interfaces';
 
-export const ContextName = {
+export const ButtonName = {
 	AddTask: 'Add task',
+	Search: 'Search',
+	Today: 'Today',
+	Upcoming: 'Upcoming',
+	Completed: 'Completed',
+	Tags: 'Tags',
+} as const;
+
+export const ContextName = {
+	AddTask: 'AddTask',
 	Search: 'Search',
 	Today: 'Today',
 	Upcoming: 'Upcoming',
@@ -73,41 +82,47 @@ export const contexts: Context[] = [
 	},
 ];
 
-export const buttons: ButtonProps[] = [
+export const verticalMenuButtons: VerticalMenuButtonProps[] = [
 	{
 		id: '46ec9fb7-88bb-42b7-b033-222ad4b930c5',
-		name: ContextName.AddTask,
+		name: ButtonName.AddTask,
 		className: ['hover-bg-grey-lighter'],
 		order: 1,
+		context: contexts.find((c) => c.name === ContextName.AddTask),
 	},
 	{
 		id: 'c4649910-414e-44bc-b996-bd36a3941efc',
-		name: ContextName.Search,
+		name: ButtonName.Search,
 		className: ['hover-bg-grey-lighter'],
 		order: 2,
+		context: contexts.find((c) => c.name === ContextName.Search),
 	},
 	{
 		id: '84c34d29-522c-49fc-b169-537c3040aac6',
-		name: ContextName.Today,
+		name: ButtonName.Today,
 		className: ['hover-bg-grey-lighter'],
 		order: 3,
+		context: contexts.find((c) => c.name === ContextName.Today),
 	},
 	{
 		id: 'c04e85ee-a64b-4ce3-86c0-53055200a0cf',
-		name: ContextName.Upcoming,
+		name: ButtonName.Upcoming,
 		className: ['hover-bg-grey-lighter'],
 		order: 4,
+		context: contexts.find((c) => c.name === ContextName.Upcoming),
 	},
 	{
 		id: 'bbfca7f7-ac55-493c-ba72-825c8cee097c',
-		name: ContextName.Completed,
+		name: ButtonName.Completed,
 		className: ['hover-bg-grey-lighter'],
 		order: 5,
+		context: contexts.find((c) => c.name === ContextName.Completed),
 	},
 	{
 		id: '28ee9bcc-dcfe-49c2-8b52-b512879a6317',
-		name: ContextName.Tags,
+		name: ButtonName.Tags,
 		className: ['hover-bg-grey-lighter'],
 		order: 6,
+		context: contexts.find((c) => c.name === ContextName.Tags),
 	},
 ];

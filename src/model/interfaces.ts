@@ -1,4 +1,8 @@
-import { type ContextNameType, type TaskListHeaderType } from './types';
+import {
+	type ButtonNameType,
+	type ContextNameType,
+	type TaskListHeaderType,
+} from './types';
 
 export interface Context {
 	id: string;
@@ -6,11 +10,15 @@ export interface Context {
 	taskList?: TaskList;
 }
 
-export interface ButtonProps {
+export interface IconButtonProps {
 	id: string;
-	name: ContextNameType;
+	name: ButtonNameType;
 	className?: string[];
+}
+
+export interface VerticalMenuButtonProps extends IconButtonProps {
 	order: number;
+	context: Context | undefined;
 }
 
 export interface Task {
@@ -31,11 +39,11 @@ export interface TaskList {
 	days: Day[];
 }
 
-export interface ButtonOnClickProps {
-	buttonOnClick: (button: ButtonProps) => void;
+export interface VerticalMenuButtonClickedProps {
+	buttonClicked: (button: VerticalMenuButtonProps) => void;
 }
 
-export interface TaskListProps {
+export interface ContextHolderProps {
 	context: Context | undefined;
 }
 
@@ -47,7 +55,7 @@ export interface DayDataContainerProps {
 	date: Date;
 }
 
-export interface DayTaskFormProps {
-	isFormHidden: boolean;
-	buttonOnClick: (isFormHidden: boolean) => void;
+export interface AddDayTaskProps {
+	isAdding: boolean;
+	toggleIsAdding: () => void;
 }

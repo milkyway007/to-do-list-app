@@ -1,16 +1,15 @@
-import { type TaskListProps } from '../../model/interfaces';
+import { type ContextHolderProps } from '../../model/interfaces';
 
 import { ContextName } from '../../constants/constants';
 
 import TaskList from '../taskList/TaskList';
 
 /**
- * @param root0 main content props
- * @param root0.context selected app context
- * @param root0.buttonOnClick button on click function
- * @returns Returns a MainContent component.
+ * @returns Returns a ContextHolder component;
+ * @param root0 ContextHolderProps;
+ * @param root0.context Selected app context.
  */
-function ContextHolder({ context }: TaskListProps) {
+function ContextHolder({ context }: ContextHolderProps) {
 	return (
 		<div className="columns">
 			<div className="column is-half is-offset-one-quarter">

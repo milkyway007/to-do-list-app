@@ -1,10 +1,4 @@
-import {
-	type ButtonProps,
-	type Day,
-	type TaskListProps,
-} from '../../model/interfaces';
-
-import { buttons, ContextName } from '../../constants/constants';
+import { type ContextHolderProps, type Day } from '../../model/interfaces';
 
 import DayTaskList from './DayTaskList';
 
@@ -16,15 +10,7 @@ import './TaskList.css';
  * @param root0.context selected app context
  * @returns Returns a TodayTaskList component.
  */
-function TaskListContainer({ context }: TaskListProps) {
-	const addTaskButton: ButtonProps | undefined = buttons.find(
-		(x) => x.name === ContextName.AddTask,
-	);
-
-	if (addTaskButton) {
-		addTaskButton.className = ['hover-text-danger'];
-	}
-
+function TaskList({ context }: ContextHolderProps) {
 	return (
 		<>
 			{context && (
@@ -51,4 +37,4 @@ function TaskListContainer({ context }: TaskListProps) {
 	);
 }
 
-export default TaskListContainer;
+export default TaskList;

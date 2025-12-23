@@ -1,43 +1,31 @@
 import {
-	type ButtonProps,
-	type DayTaskFormProps,
+	type AddDayTaskProps,
+	type IconButtonProps,
 } from '../../model/interfaces';
 
-import { buttons, ContextName } from '../../constants/constants';
+import { ButtonName } from '../../constants/constants';
 
 import IconButton from '../general/IconButton';
 
 /**
- * @param root0 ButtonOnClickProps
- * @param root0.buttonOnClick buttonOnClick function
- * @param root0.isFormHidden Determines if the DayTaskForm component is hidden from the screen:
- * if the DayTaskForm component is hidden, then AddTaskButton is visible and vice versa.
- * @returns AddTaskButton component
+ * @returns AddDayTaskProps component;
+ * @param root0 DayTaskFormProps;
+ * @param root0.toggleIsAdding Toggles IsAdding property;
+ * @param root0.isAdding Determines if the DayTaskList component is in IsAdding state.
  */
-function AddTaskButton({ isFormHidden, buttonOnClick }: DayTaskFormProps) {
-	console.log(3);
-	console.log(isFormHidden);
-
-	const addTaskButton: ButtonProps | undefined = buttons.find(
-		(x) => x.name === ContextName.AddTask,
-	);
-
-	if (addTaskButton) {
-		addTaskButton.className = ['hover-text-danger', 'pl-0'];
-	}
+function AddTaskButton({ isAdding, toggleIsAdding }: AddDayTaskProps) {
+	const addTaskButton: IconButtonProps = {
+		id: 'c036d75a-8df0-42e6-9ca2-3fdf862e0c2b',
+		name: ButtonName.AddTask,
+		className: ['hover-text-danger', 'pl-0'],
+	};
 
 	return (
-		<>
-			{addTaskButton && (
-				<div
-					className={`clickable ${isFormHidden ? '' : 'is-hidden'}`}
-					onClick={() => {
-						buttonOnClick(!isFormHidden);
-					}}>
-					<IconButton {...addTaskButton} />
-				</div>
-			)}
-		</>
+		<div
+			className={`clickable ${isAdding ? 'is-hidden' : ''}`}
+			onClick={toggleIsAdding}>
+			<IconButton {...addTaskButton} />
+		</div>
 	);
 }
 

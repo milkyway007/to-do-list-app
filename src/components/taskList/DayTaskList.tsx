@@ -14,29 +14,25 @@ import './TaskList.css';
  * @returns DayTaskList component
  */
 function DayTaskList({ day }: DayTaskListProps) {
-	const [isFormHidden, setIsHidden] = useState<boolean>(true);
-	console.log(1);
-	console.log(isFormHidden);
+	const [isAdding, setIsAdding] = useState<boolean>(false);
 
 	/**
-	 * OnClick event for a button.
-	 * @param isFormHidden determines if the DayTaskForm and AddTaskButton components are hidden from the screen
+	 * Toggles the IsAdding state.
 	 */
-	function buttonOnClick(isFormHidden: boolean): void {
-		console.log(isFormHidden);
-		setIsHidden(isFormHidden);
+	function toggleIsAdding(): void {
+		setIsAdding(!isAdding);
 	}
 
 	return (
 		<>
 			<DateContainer date={day.date} />
 			<DayTaskForm
-				isFormHidden={isFormHidden}
-				buttonOnClick={buttonOnClick}
+				isAdding={isAdding}
+				toggleIsAdding={toggleIsAdding}
 			/>
 			<AddTaskButton
-				isFormHidden={isFormHidden}
-				buttonOnClick={buttonOnClick}
+				isAdding={isAdding}
+				toggleIsAdding={toggleIsAdding}
 			/>
 		</>
 	);
