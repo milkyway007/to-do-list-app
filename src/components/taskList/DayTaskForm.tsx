@@ -3,13 +3,11 @@ import { type AddDayTaskProps } from '../../model/interfaces';
 /**
  * @returns DayTaskForm component;
  * @param root0 AddDayTaskProps;
- * @param root0.toggleIsAdding Toggles IsAdding property;
- * @param root0.isAdding Determines if the DayTaskList component is in IsAdding state.
+ * @param root0.toggleIsAdding Toggles IsAdding property.
  */
-function DayTaskForm({ isAdding, toggleIsAdding }: AddDayTaskProps) {
+function DayTaskForm({ toggleIsAdding }: AddDayTaskProps) {
 	return (
-		<form
-			className={`box day-task-form m-0 p-0 ${!isAdding ? 'is-hidden' : ''}`}>
+		<form className="box day-task-form m-0 p-0">
 			<div className="day-task-form-block m-4">
 				<textarea
 					className="textarea auto-textarea p-0"

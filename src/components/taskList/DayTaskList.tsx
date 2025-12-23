@@ -9,9 +9,9 @@ import DayTaskForm from './DayTaskForm';
 import './TaskList.css';
 
 /**
- * @param root0 DayTaskListProps
- * @param root0.day day object
- * @returns DayTaskList component
+ * @returns DayTaskList component;
+ * @param root0 DayTaskListProps;
+ * @param root0.day day object.
  */
 function DayTaskList({ day }: DayTaskListProps) {
 	const [isAdding, setIsAdding] = useState<boolean>(false);
@@ -23,17 +23,18 @@ function DayTaskList({ day }: DayTaskListProps) {
 		setIsAdding(!isAdding);
 	}
 
+	let content = undefined;
+
+	if (isAdding) {
+		content = <DayTaskForm toggleIsAdding={toggleIsAdding} />;
+	} else {
+		content = <AddTaskButton toggleIsAdding={toggleIsAdding} />;
+	}
+
 	return (
 		<>
 			<DateContainer date={day.date} />
-			<DayTaskForm
-				isAdding={isAdding}
-				toggleIsAdding={toggleIsAdding}
-			/>
-			<AddTaskButton
-				isAdding={isAdding}
-				toggleIsAdding={toggleIsAdding}
-			/>
+			{content}
 		</>
 	);
 }

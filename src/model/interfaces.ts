@@ -56,6 +56,5 @@ export interface DayDataContainerProps {
 }
 
 export interface AddDayTaskProps {
-	isAdding: boolean;
 	toggleIsAdding: () => void;
 }

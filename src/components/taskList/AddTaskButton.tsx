@@ -11,9 +11,8 @@ import IconButton from '../general/IconButton';
  * @returns AddDayTaskProps component;
  * @param root0 DayTaskFormProps;
  * @param root0.toggleIsAdding Toggles IsAdding property;
- * @param root0.isAdding Determines if the DayTaskList component is in IsAdding state.
  */
-function AddTaskButton({ isAdding, toggleIsAdding }: AddDayTaskProps) {
+function AddTaskButton({ toggleIsAdding }: AddDayTaskProps) {
 	const addTaskButton: IconButtonProps = {
 		id: 'c036d75a-8df0-42e6-9ca2-3fdf862e0c2b',
 		name: ButtonName.AddTask,
@@ -22,7 +21,7 @@ function AddTaskButton({ isAdding, toggleIsAdding }: AddDayTaskProps) {
 
 	return (
 		<div
-			className={`clickable ${isAdding ? 'is-hidden' : ''}`}
+			className="clickable"
 			onClick={toggleIsAdding}>
 			<IconButton {...addTaskButton} />
 		</div>
