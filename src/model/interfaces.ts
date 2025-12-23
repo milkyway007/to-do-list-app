@@ -25,6 +25,7 @@ export interface VerticalMenuButtonProps extends IconButtonProps {
 
 export interface Task {
 	id: string;
+	title: string;
 	description: string;
 }
 

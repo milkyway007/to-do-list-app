@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { type DayTaskListProps } from '../../model/interfaces';
 
-import AddTaskButton from './AddTaskButton';
+import AddDayTaskForm from './AddDayTaskForm';
 import DateContainer from './DateContainer';
-import DayTaskForm from './DayTaskForm';
+import ShowAddDayTaskFormButton from './ShowAddDayTaskFormButton';
 
 import './DayTaskList.css';
 
@@ -26,9 +26,9 @@ function DayTaskList({ day }: DayTaskListProps) {
 	let content = undefined;
 
 	if (isAdding) {
-		content = <DayTaskForm toggleIsAdding={toggleIsAdding} />;
+		content = <AddDayTaskForm toggleIsAdding={toggleIsAdding} />;
 	} else {
-		content = <AddTaskButton toggleIsAdding={toggleIsAdding} />;
+		content = <ShowAddDayTaskFormButton toggleIsAdding={toggleIsAdding} />;
 	}
 
 	return (

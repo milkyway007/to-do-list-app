@@ -1,9 +1,11 @@
 import { type ParentComponentProps } from '../../model/interfaces';
 
 /**
- * @returns Returns a ContextHolder component;
- * @param root0 ParentComponentProps;
- * @param root0.children The content inside the opening and closing tags of a parent component.
+ * ContextHolder component.
+ * Provides a centered column layout for its children.
+ * @param root0 - ParentComponentProps.
+ * @param root0.children - Content rendered inside the container.
+ * @returns - A ContextHolder component.
  */
 function ContextHolder({ children }: ParentComponentProps) {
 	return (
