@@ -9,9 +9,9 @@ import {
 	verticalMenuButtons,
 } from './constants/constants';
 
-import ContextHolder from './components/contextHolder/ContextHolder';
-import DayTaskList from './components/dayTaskList/DayTaskList';
-import IconButton from './components/general/IconButton';
+import { ContentWrapper } from './components/contentWrapper/ContentWrapper';
+import { DayTaskList } from './components/dayTaskList/DayTaskList';
+import { IconButton } from './components/general/IconButton';
 import VerticalMenu from './components/verticalMenu/VerticalMenu';
 
 import './App.css';
@@ -84,17 +84,19 @@ function App() {
 		<>
 			<div
 				id="app"
-				className="columns">
+				className="columns"
+			>
 				<div className="column is-2 has-background-white-ter">
 					<VerticalMenu>
 						<ul className="menu-list">
 							{verticalMenuButtons.map((item: VerticalMenuButtonProps) => {
 								return (
 									<li
-										key={item.name}
+										key={item.id}
 										onClick={() => {
 											onVerticalMenuButtonClicked(item.contextName);
-										}}>
+										}}
+									>
 										<IconButton {...item} />
 									</li>
 								);
@@ -103,7 +105,7 @@ function App() {
 					</VerticalMenu>
 				</div>
 				<div className="column">
-					<ContextHolder>{initialContext}</ContextHolder>
+					<ContentWrapper>{initialContext}</ContentWrapper>
 				</div>
 			</div>
 		</>

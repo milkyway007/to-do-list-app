@@ -2,20 +2,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import select from '../../services/iconSelector';
 
-import { type IconButtonProps } from '../../model/interfaces';
+import { type ButtonNameType } from '../../model/types';
 
 import './IconButton.css';
 
+export interface IconButtonProps {
+	id: string;
+	name: ButtonNameType;
+	className?: string[];
+}
+
 /**
- * @returns Returns an IconButton component;
- * @param root0 IconButtonProps;
- * @param root0.name Icon button name;
- * @param root0.className Icon button classes.
+ * IconButton
+ * A reusable button that displays an icon (from FontAwesome) and optional text.
  */
-function IconButton({ name, className }: IconButtonProps) {
+export function IconButton({ name, className }: IconButtonProps) {
 	return (
 		<button
-			className={`button icon-button has-no-border ${className?.join(' ') ?? ''}`}>
+			type="button"
+			className={`button icon-button has-no-border ${className?.join(' ') ?? ''}`}
+		>
 			<span className="icon-text">
 				<span>
 					<FontAwesomeIcon icon={select(name)} />
@@ -25,5 +31,3 @@ function IconButton({ name, className }: IconButtonProps) {
 		</button>
 	);
 }
-
-export default IconButton;

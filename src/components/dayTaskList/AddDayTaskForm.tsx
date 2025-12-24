@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-import { type AddDayTaskProps, type Task } from '../../model/interfaces';
+import { type Task } from '../../model/interfaces';
+
+interface AddDayTaskFormProps {
+	toggleIsAdding: () => void;
+}
 
 const initialTask: Task = {
 	id: '',
@@ -9,19 +13,14 @@ const initialTask: Task = {
 };
 
 /**
- * AddDayTaskForm component.
+ * AddDayTaskForm
  * Allows creating a new day task with title and description.
- * @param AddDayTaskProps - AddDayTaskProps.
- * @param AddDayTaskProps.toggleIsAdding  - Toggles the "isAdding" state in the parent component.
- * @returns AddDayTaskForm component.
  */
-function AddDayTaskForm({ toggleIsAdding }: AddDayTaskProps) {
+export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 	const [newTask, setNewTask] = useState<Task>(initialTask);
 
 	/**
-	 * Handles changes to the task title.
-	 *
-	 * @param event - The textarea change event.
+	 * Updates the task title in the state when the textarea changes.
 	 */
 	function onTitleChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		setNewTask((prev) => ({
@@ -31,9 +30,7 @@ function AddDayTaskForm({ toggleIsAdding }: AddDayTaskProps) {
 	}
 
 	/**
-	 * Handles changes to the task description.
-	 *
-	 * @param event - The textarea change event.
+	 * Updates the task description in the state when the textarea changes.
 	 */
 	function onDescriptionChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		setNewTask((prev) => ({
@@ -50,29 +47,31 @@ function AddDayTaskForm({ toggleIsAdding }: AddDayTaskProps) {
 					placeholder="Discuss thesis tomorrow morning"
 					value={newTask.title}
 					rows={1}
-					onChange={onTitleChanged}></textarea>
+					onChange={onTitleChanged}
+				></textarea>
 				<textarea
 					className="textarea auto-textarea p-0"
 					placeholder="Description"
 					value={newTask.description}
 					rows={1}
-					onChange={onDescriptionChanged}></textarea>
+					onChange={onDescriptionChanged}
+				></textarea>
 			</div>
 			<div className="buttons is-grouped day-task-form-footer p-4">
 				<button
 					type="button"
 					className="button is-light right"
-					onClick={toggleIsAdding}>
+					onClick={toggleIsAdding}
+				>
 					Cancel
 				</button>
 				<button
 					type="button"
-					className="button is-danger right">
+					className="button is-danger right"
+				>
 					Add task
 				</button>
 			</div>
 		</form>
 	);
 }
-
-export default AddDayTaskForm;

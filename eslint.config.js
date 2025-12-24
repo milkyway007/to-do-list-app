@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import { jsdoc } from 'eslint-plugin-jsdoc';
+import prettierPlugin from 'eslint-plugin-prettier';
 import pluginObject from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
@@ -27,6 +28,8 @@ export default defineConfig([
 		rules: {
 			'jsdoc/require-returns-type': 0,
 			'jsdoc/require-param-type': 0,
+			'jsdoc/require-param': 0,
+			'jsdoc/require-returns': 0,
 		},
 		settings: {
 			structuredTags: {
@@ -47,6 +50,7 @@ export default defineConfig([
 			'simple-import-sort': simpleImportSort,
 			import: importPlugin,
 			reactHooks: pluginObject,
+			prettier: prettierPlugin,
 		},
 		rules: {
 			quotes: ['error', 'single'],
@@ -75,6 +79,7 @@ export default defineConfig([
 			'import/newline-after-import': 'error',
 			'import/no-duplicates': 'error',
 			'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
+			'prettier/prettier': 'error',
 		},
 	},
 ]);

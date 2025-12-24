@@ -12,15 +12,12 @@ export interface Context {
 	taskList?: TaskList;
 }
 
-export interface IconButtonProps {
+export interface VerticalMenuButtonProps {
+	order: number;
+	contextName: ContextNameType;
 	id: string;
 	name: ButtonNameType;
 	className?: string[];
-}
-
-export interface VerticalMenuButtonProps extends IconButtonProps {
-	order: number;
-	contextName: ContextNameType;
 }
 
 export interface Task {
@@ -48,16 +45,4 @@ export interface ParentComponentProps {
 
 export interface ContextHolderProps {
 	context: Context | undefined;
-}
-
-export interface DayTaskListProps {
-	day: Day;
-}
-
-export interface DayDataContainerProps {
-	date: Date;
-}
-
-export interface AddDayTaskProps {
-	toggleIsAdding: () => void;
 }

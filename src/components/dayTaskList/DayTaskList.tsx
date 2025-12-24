@@ -1,42 +1,39 @@
 import { useState } from 'react';
 
-import { type DayTaskListProps } from '../../model/interfaces';
+import { type Day } from '../../model/interfaces';
 
-import AddDayTaskForm from './AddDayTaskForm';
-import DateContainer from './DateContainer';
-import ShowAddDayTaskFormButton from './ShowAddDayTaskFormButton';
+import { AddDayTaskForm } from './AddDayTaskForm';
+import { DayHeader } from './DayHeader';
+import { ToggleAddTaskButton } from './ToggleAddTaskButton';
 
 import './DayTaskList.css';
 
+export interface DayTaskListProps {
+	day: Day;
+}
+
 /**
- * @returns DayTaskList component;
- * @param root0 DayTaskListProps;
- * @param root0.day day object.
+ * DayTaskList
  */
-function DayTaskList({ day }: DayTaskListProps) {
+export function DayTaskList({ day }: DayTaskListProps) {
 	const [isAdding, setIsAdding] = useState<boolean>(false);
 
 	/**
 	 * Toggles the IsAdding state.
 	 */
-	function toggleIsAdding(): void {
-		setIsAdding((adding) => !adding);
-	}
-
-	let content = undefined;
-
-	if (isAdding) {
-		content = <AddDayTaskForm toggleIsAdding={toggleIsAdding} />;
-	} else {
-		content = <ShowAddDayTaskFormButton toggleIsAdding={toggleIsAdding} />;
-	}
+	const toggleIsAdding = () => {
+		setIsAdding((prev) => !prev);
+	};
 
 	return (
-		<>
-			<DateContainer date={day.date} />
-			{content}
-		</>
+		<div className="day-task-list">
+			<DayHeader date={day.date} />
+
+			{isAdding ? (
+				<AddDayTaskForm toggleIsAdding={toggleIsAdding} />
+			) : (
+				<ToggleAddTaskButton toggleIsAdding={toggleIsAdding} />
+			)}
+		</div>
 	);
 }
-
-export default DayTaskList;
