@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import select from '../../../services/icons/iconSelector';
 
-import { CONTEXT_CONFIG, type ContextName } from '../../../constants/context';
+import { type ContextName } from '../../../constants/context';
+import { CONTEXT_CONFIG } from '../../../constants/contextConfig';
 
 import './IconButton.css';
 

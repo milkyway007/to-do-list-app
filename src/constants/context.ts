@@ -1,15 +1,7 @@
 import { type Context } from '../model/Context';
 
+import { CONTEXT_CONFIG } from './contextConfig';
 import { taskLists } from './taskLists';
-
-export const CONTEXT_CONFIG = {
-	AddTask: { label: 'Add task', hasTaskList: false },
-	Search: { label: 'Search', hasTaskList: false },
-	Today: { label: 'Today', hasTaskList: true },
-	Upcoming: { label: 'Upcoming', hasTaskList: true },
-	Completed: { label: 'Completed', hasTaskList: false },
-	Tags: { label: 'Tags', hasTaskList: false },
-} as const;
 
 export type ContextName = keyof typeof CONTEXT_CONFIG;
 export type TaskListContextName = {

@@ -1,6 +1,7 @@
 import { type TaskList } from '../model/TaskList';
 
-import { CONTEXT_CONFIG, type TaskListContextName } from './context';
+import { type TaskListContextName } from './context';
+import { CONTEXT_CONFIG } from './contextConfig';
 
 export const taskLists: Record<TaskListContextName, TaskList> = {
 	Today: {

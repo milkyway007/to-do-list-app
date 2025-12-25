@@ -1,7 +1,6 @@
 import { type PropsWithChildren } from 'react';
 
 import './VerticalMenu.css';
-import '../general/IconButton.css';
 
 /**
  * VerticalMenu

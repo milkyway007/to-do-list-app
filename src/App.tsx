@@ -5,11 +5,8 @@ import { type Day } from './model/Day';
 import { type TaskList } from './model/TaskList';
 import { type VerticalMenuButtonProps } from './model/VerticalMenuButton';
 
-import {
-	CONTEXT_CONFIG,
-	type ContextName,
-	contexts,
-} from './constants/context';
+import { type ContextName, contexts } from './constants/context';
+import { CONTEXT_CONFIG } from './constants/contextConfig';
 import { verticalMenuButtons } from './constants/verticalMenu';
 
 import { IconButton } from './components/controls/IconButton/IconButton';

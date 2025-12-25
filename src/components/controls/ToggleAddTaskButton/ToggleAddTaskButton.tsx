@@ -14,9 +14,9 @@ export function ToggleAddTaskButton({
 	toggleIsAdding,
 }: ToggleAddTaskButtonProps) {
 	return (
-		<button
+		<div
 			className="clickable"
-			type="button"
+			role="button"
 			onClick={toggleIsAdding}
 		>
 			<IconButton
@@ -24,6 +24,6 @@ export function ToggleAddTaskButton({
 				contextName="AddTask"
 				className={['hover-text-danger', 'pl-0']}
 			/>
-		</button>
+		</div>
 	);
 }
