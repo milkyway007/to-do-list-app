@@ -1,1 +1,24 @@
+.day-task {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	border-bottom: 1px solid #f2f2f2;
+	flex-grow: 1;
+}
 
+.radio.day-task-radio input[type='radio'] {
+	margin-top: 0.4rem;
+}
+
+.day-task-radio-content {
+	flex-direction: column;
+}
+
+.day-task-list ol {
+	display: flex;
+	flex-direction: column;
+}
+
+.day-task-list li {
+	flex-grow: 1;
+}

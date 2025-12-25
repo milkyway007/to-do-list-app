@@ -20,6 +20,10 @@ textarea.auto-textarea {
 	-moz-appearance: none;
 }
 
+.box.add-day-task-form:focus-within {
+	border: 1px solid hsl(0, 0%, 86%);
+}
+
 .buttons.add-day-task-form-footer {
 	display: flex;
 	justify-content: flex-end;

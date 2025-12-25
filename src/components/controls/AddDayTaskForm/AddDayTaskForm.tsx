@@ -6,6 +6,7 @@ import './AddDayTaskForm.css';
 
 interface AddDayTaskFormProps {
 	toggleIsAdding: () => void;
+	addTask: (task: Task) => void;
 }
 
 const initialTask: Task = {
@@ -18,7 +19,10 @@ const initialTask: Task = {
  * AddDayTaskForm
  * Allows creating a new day task with title and description.
  */
-export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
+export function AddDayTaskForm({
+	toggleIsAdding,
+	addTask,
+}: AddDayTaskFormProps) {
 	const [newTask, setNewTask] = useState<Task>(initialTask);
 
 	/**
@@ -41,8 +45,17 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 		}));
 	}
 
+	/**
+	 * Updates the task description in the state when the textarea changes.
+	 */
+	function onAddTaskButtonClicked() {
+		addTask({ ...newTask });
+		setNewTask(initialTask);
+		toggleIsAdding();
+	}
+
 	return (
-		<form className="box add-day-task-form m-0 p-0">
+		<form className="box add-day-task-form m-0 mt-1 p-0">
 			<div className="add-day-task-form-block m-4">
 				<textarea
 					className="textarea auto-textarea p-0"
@@ -70,6 +83,7 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 				<button
 					type="button"
 					className="button is-danger right"
+					onClick={onAddTaskButtonClicked}
 				>
 					Add task
 				</button>
