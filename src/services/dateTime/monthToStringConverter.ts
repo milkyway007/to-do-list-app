@@ -14,8 +14,7 @@ const monthNames = [
 ] as const;
 
 /**
- * @returns month name
- * @param monthIndex month index
+ * Converts a month index (0-11) to its corresponding month name.
  */
 export function convert(monthIndex: number): string {
 	return monthNames[monthIndex];

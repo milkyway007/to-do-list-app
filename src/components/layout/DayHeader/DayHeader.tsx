@@ -2,8 +2,10 @@ import {
 	getWeekdayName,
 	isToday,
 	isYesterday,
-} from '../../services/dateTimeUtils';
-import { convert } from '../../services/monthToStringConverter';
+} from '../../../services/dateTime/dateTimeUtils';
+import { convert } from '../../../services/dateTime/monthToStringConverter';
+
+import './DayHeader.css';
 
 interface DayHeaderProps {
 	date: Date;
@@ -22,7 +24,7 @@ export function DayHeader({ date }: DayHeaderProps) {
 			: '';
 
 	return (
-		<div className="header day-data-container has-text-weight-bold pb-1 mb-3">
+		<div className="header day-header has-text-weight-bold pb-1 mb-3">
 			<div>
 				{date.getDate()} {convert(date.getMonth())}
 			</div>

@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import select from '../../services/iconSelector';
+import select from '../../../services/icons/iconSelector';
 
-import { type ButtonNameType } from '../../model/types';
+import { CONTEXT_CONFIG, type ContextName } from '../../../constants/context';
 
 import './IconButton.css';
 
 export interface IconButtonProps {
 	id: string;
-	name: ButtonNameType;
+	contextName: ContextName;
 	className?: string[];
 }
 
@@ -16,7 +16,7 @@ export interface IconButtonProps {
  * IconButton
  * A reusable button that displays an icon (from FontAwesome) and optional text.
  */
-export function IconButton({ name, className }: IconButtonProps) {
+export function IconButton({ contextName, className }: IconButtonProps) {
 	return (
 		<button
 			type="button"
@@ -24,9 +24,9 @@ export function IconButton({ name, className }: IconButtonProps) {
 		>
 			<span className="icon-text">
 				<span>
-					<FontAwesomeIcon icon={select(name)} />
+					<FontAwesomeIcon icon={select(contextName)} />
 				</span>
-				<span>{name}</span>
+				<span>{CONTEXT_CONFIG[contextName].label}</span>
 			</span>
 		</button>
 	);

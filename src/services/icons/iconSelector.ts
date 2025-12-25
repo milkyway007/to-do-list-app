@@ -8,13 +8,14 @@ import {
 	type IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
+import { type ContextName } from '../../constants/context';
+
 /**
- * @param name - Menu list item header.
- * @returns Returns a VerticalMenuListItem icon.
+ * Returns the FontAwesome icon corresponding to a given context name.
  */
-export default function select(name: string): IconDefinition {
-	switch (name) {
-		case 'Add task':
+export default function select(contextName: ContextName): IconDefinition {
+	switch (contextName) {
+		case 'AddTask':
 			return faPlus;
 		case 'Search':
 			return faMagnifyingGlass;
@@ -26,7 +27,5 @@ export default function select(name: string): IconDefinition {
 			return faCircleCheck;
 		case 'Tags':
 			return faTags;
-		default:
-			throw new Error(`No icon found for "${name}"`);
 	}
 }

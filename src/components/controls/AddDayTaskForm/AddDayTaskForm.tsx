@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import { type Task } from '../../model/interfaces';
+import { type Task } from '../../../model/Task';
+
+import './AddDayTaskForm.css';
 
 interface AddDayTaskFormProps {
 	toggleIsAdding: () => void;
@@ -40,8 +42,8 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 	}
 
 	return (
-		<form className="box day-task-form m-0 p-0">
-			<div className="day-task-form-block m-4">
+		<form className="box add-day-task-form m-0 p-0">
+			<div className="add-day-task-form-block m-4">
 				<textarea
 					className="textarea auto-textarea p-0"
 					placeholder="Discuss thesis tomorrow morning"
@@ -57,7 +59,7 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 					onChange={onDescriptionChanged}
 				></textarea>
 			</div>
-			<div className="buttons is-grouped day-task-form-footer p-4">
+			<div className="buttons is-grouped add-day-task-form-footer p-4">
 				<button
 					type="button"
 					className="button is-light right"

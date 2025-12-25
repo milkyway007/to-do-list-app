@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import { type Day } from '../../model/interfaces';
+import { type Day } from '../../../model/Day';
 
-import { AddDayTaskForm } from './AddDayTaskForm';
-import { DayHeader } from './DayHeader';
-import { ToggleAddTaskButton } from './ToggleAddTaskButton';
+import { AddDayTaskForm } from '../../controls/AddDayTaskForm/AddDayTaskForm';
+import { ToggleAddTaskButton } from '../../controls/ToggleAddTaskButton/ToggleAddTaskButton';
+import { DayHeader } from '../DayHeader/DayHeader';
 
-import './DayTaskList.css';
+import './DayTaskListContainer.css';
 
 export interface DayTaskListProps {
 	day: Day;

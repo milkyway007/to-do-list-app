@@ -1,6 +1,6 @@
-import { ButtonName } from '../../constants/constants';
+import { IconButton } from '../IconButton/IconButton';
 
-import { IconButton } from '../general/IconButton';
+import './ToggleAddTaskButton.css';
 
 interface ToggleAddTaskButtonProps {
 	toggleIsAdding: () => void;
@@ -21,7 +21,7 @@ export function ToggleAddTaskButton({
 		>
 			<IconButton
 				id="c036d75a-8df0-42e6-9ca2-3fdf862e0c2b"
-				name={ButtonName.AddTask}
+				contextName="AddTask"
 				className={['hover-text-danger', 'pl-0']}
 			/>
 		</button>

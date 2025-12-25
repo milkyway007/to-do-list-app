@@ -1,59 +1,62 @@
 import { type ReactNode, useState } from 'react';
 
-import { type Day, type VerticalMenuButtonProps } from './model/interfaces';
-import { type ContextNameType } from './model/types';
+import { type Context } from './model/Context';
+import { type Day } from './model/Day';
+import { type TaskList } from './model/TaskList';
+import { type VerticalMenuButtonProps } from './model/VerticalMenuButton';
 
 import {
-	ContextName,
+	CONTEXT_CONFIG,
+	type ContextName,
 	contexts,
-	verticalMenuButtons,
-} from './constants/constants';
+} from './constants/context';
+import { verticalMenuButtons } from './constants/verticalMenu';
 
-import { ContentWrapper } from './components/contentWrapper/ContentWrapper';
-import { DayTaskList } from './components/dayTaskList/DayTaskList';
-import { IconButton } from './components/general/IconButton';
-import VerticalMenu from './components/verticalMenu/VerticalMenu';
+import { IconButton } from './components/controls/IconButton/IconButton';
+import { ContentWrapper } from './components/layout/ContentWrapper/ContentWrapper';
+import { DayTaskList } from './components/layout/DayTaskListContainer/DayTaskListContainer';
+import { VerticalMenu } from './components/layout/VerticalMenu/VerticalMenu';
 
 import './App.css';
 
 /**
- * @returns Returns an App icon.
+ * App
+ * Main application component.
+ * Handles the vertical menu selection and renders the corresponding task list content.
  */
-function App() {
+export function App() {
 	const [selectedContextName, setSelectedContextName] =
-		useState<ContextNameType>(ContextName.Today);
+		useState<ContextName>('Today');
 
 	/**
-	 * Clicked event for a vertical menu button.
-	 * @param contextName The name of the selected context.
+	 * Handles clicks on vertical menu buttons.
+	 * Updates the currently selected context.
 	 */
-	function onVerticalMenuButtonClicked(contextName: ContextNameType): void {
+	function onVerticalMenuButtonClicked(contextName: ContextName): void {
 		setSelectedContextName(contextName);
 	}
 
 	/**
-	 * Returns the layot for a context;
-	 * @returns the layot for a context;
-	 * @param name The name of the context;
-	 * @param days The days of the context;
+	 * Renders the layout for a given context.
+	 * If the context has no task list, returns null.
 	 */
-	function getContextLayout(
-		name: ContextNameType,
-		days: Day[] | undefined,
+	function getCurrentContextLayout(
+		name: ContextName,
+		taskList: TaskList | undefined,
 	): ReactNode {
-		if (name !== ContextName.Today) {
-			return undefined;
+		if (!taskList) {
+			return null;
 		}
 
 		return (
 			<div className="content block task-list-container">
 				<div className="task-list-header">
-					<h2 className="header mb-5">{name}</h2>
+					<h2 className="header mb-5">{CONTEXT_CONFIG[name].label}</h2>
 				</div>
 				<div className="task-list-body">
-					{days?.length && (
+					{taskList.days.length > 0 && (
 						<ul>
-							{days.map((day: Day) => {
+							{taskList.days.map((day: Day) => {
 								return (
 									<li key={day.id}>
 										<DayTaskList day={day} />
@@ -67,49 +70,41 @@ function App() {
 		);
 	}
 
-	let initialContext = undefined;
+	const selectedContext: Context | undefined = contexts.find(
+		(x) => x.name === selectedContextName,
+	);
 
-	if (selectedContextName === ContextName.Today) {
-		const selectedContext = contexts.find(
-			(x) => x.name === selectedContextName,
-		);
-
-		initialContext = getContextLayout(
-			selectedContextName,
-			selectedContext?.taskList?.days,
-		);
-	}
+	const currentContext = getCurrentContextLayout(
+		selectedContextName,
+		selectedContext?.taskList,
+	);
 
 	return (
-		<>
-			<div
-				id="app"
-				className="columns"
-			>
-				<div className="column is-2 has-background-white-ter">
-					<VerticalMenu>
-						<ul className="menu-list">
-							{verticalMenuButtons.map((item: VerticalMenuButtonProps) => {
-								return (
-									<li
-										key={item.id}
-										onClick={() => {
-											onVerticalMenuButtonClicked(item.contextName);
-										}}
-									>
-										<IconButton {...item} />
-									</li>
-								);
-							})}
-						</ul>
-					</VerticalMenu>
-				</div>
-				<div className="column">
-					<ContentWrapper>{initialContext}</ContentWrapper>
-				</div>
+		<div
+			id="app"
+			className="columns"
+		>
+			<div className="column is-2 has-background-white-ter">
+				<VerticalMenu>
+					<ul className="menu-list">
+						{verticalMenuButtons.map((item: VerticalMenuButtonProps) => {
+							return (
+								<li
+									key={item.id}
+									onClick={() => {
+										onVerticalMenuButtonClicked(item.contextName);
+									}}
+								>
+									<IconButton {...item} />
+								</li>
+							);
+						})}
+					</ul>
+				</VerticalMenu>
 			</div>
-		</>
+			<div className="column">
+				<ContentWrapper>{currentContext}</ContentWrapper>
+			</div>
+		</div>
 	);
 }
-
-export default App;
