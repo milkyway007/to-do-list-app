@@ -11,7 +11,12 @@ button.hover-bg-grey-lighter:not(:hover) {
 }
 
 button.hover-bg-grey-lighter:hover {
-	background-color: hsl(0, 0%, 86%);
+	background-color: hsl(0, 0%, 96%);
+}
+
+button.hover-bg-grey-lighter.is-active {
+	color: hsl(348, 100%, 61%);
+	background-color: hsl(347, 90%, 96%);
 }
 
 button.hover-text-danger {

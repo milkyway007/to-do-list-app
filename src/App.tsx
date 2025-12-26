@@ -12,7 +12,7 @@ import { verticalMenuButtons } from './constants/verticalMenu';
 import { IconButton } from './components/controls/IconButton/IconButton';
 import { ContentWrapper } from './components/layout/ContentWrapper/ContentWrapper';
 import { DayTaskList } from './components/layout/DayTaskListContainer/DayTaskListContainer';
-import { VerticalMenu } from './components/layout/VerticalMenu/VerticalMenu';
+import { VerticalMenu } from './components/layout/verticalMenu/VerticalMenu';
 
 import './App.css';
 
@@ -81,9 +81,9 @@ export function App() {
 			id="app"
 			className="columns"
 		>
-			<div className="column is-2 has-background-white-ter">
+			<div className="column is-2 has-background-white-bis">
 				<VerticalMenu>
-					<ul className="menu-list">
+					<ol className="menu-list">
 						{verticalMenuButtons.map((item: VerticalMenuButtonProps) => {
 							return (
 								<li
@@ -92,11 +92,14 @@ export function App() {
 										onVerticalMenuButtonClicked(item.contextName);
 									}}
 								>
-									<IconButton {...item} />
+									<IconButton
+										{...item}
+										isActive={item.contextName === selectedContextName}
+									/>
 								</li>
 							);
 						})}
-					</ul>
+					</ol>
 				</VerticalMenu>
 			</div>
 			<div className="column">

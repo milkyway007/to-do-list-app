@@ -14,10 +14,11 @@ export const MENU_ORDER = [
 
 export const verticalMenuButtons: VerticalMenuButtonProps[] = MENU_ORDER.map(
 	(contextName, index) => ({
-		id: contextName,
+		id: '',
 		name: CONTEXT_CONFIG[contextName].label,
 		contextName,
 		order: index + 1,
 		className: ['hover-bg-grey-lighter'],
+		isActive: false,
 	}),
 );

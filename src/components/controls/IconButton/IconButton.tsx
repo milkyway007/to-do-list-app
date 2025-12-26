@@ -11,17 +11,22 @@ export interface IconButtonProps {
 	id: string;
 	contextName: ContextName;
 	className?: string[];
+	isActive?: boolean;
 }
 
 /**
  * IconButton
  * A reusable button that displays an icon (from FontAwesome) and optional text.
  */
-export function IconButton({ contextName, className }: IconButtonProps) {
+export function IconButton({
+	contextName,
+	className,
+	isActive,
+}: IconButtonProps) {
 	return (
 		<button
 			type="button"
-			className={`button icon-button has-no-border ${className?.join(' ') ?? ''}`}
+			className={`button icon-button has-no-border ${isActive ? 'is-active' : ''} ${className?.join(' ') ?? ''}`}
 		>
 			<span className="icon-text">
 				<span>
