@@ -12,6 +12,13 @@ textarea.auto-textarea {
 	-moz-appearance: none;
 }
 
+textarea.auto-textarea:focus {
+	box-shadow: none;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
 .box.add-day-task-form {
 	border: 1px solid hsl(0, 0%, 96%);
 	box-shadow: none;
