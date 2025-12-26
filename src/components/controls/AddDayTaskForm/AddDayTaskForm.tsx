@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
-import { type Task } from '../../../model/Task';
+import { type TaskViewModel } from '../../../model/viewModel/TaskViewModel';
 
 import './AddDayTaskForm.css';
 
 interface AddDayTaskFormProps {
 	toggleIsAdding: () => void;
-	addTask: (task: Task) => void;
+	addTask: (task: TaskViewModel) => void;
 }
 
-const initialTask: Task = {
+const initialTask: TaskViewModel = {
 	id: '',
 	title: '',
 	description: '',
@@ -23,7 +23,7 @@ export function AddDayTaskForm({
 	toggleIsAdding,
 	addTask,
 }: AddDayTaskFormProps) {
-	const [newTask, setNewTask] = useState<Task>(initialTask);
+	const [newTask, setNewTask] = useState<TaskViewModel>(initialTask);
 
 	/**
 	 * Updates the task title in the state when the textarea changes.

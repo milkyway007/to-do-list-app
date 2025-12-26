@@ -1,4 +1,4 @@
-import { type VerticalMenuButtonProps } from '../model/VerticalMenuButton';
+import { type VerticalMenuButtonProps } from '../model/ui/VerticalMenuButton';
 
 import { type ContextName } from './context';
 import { CONTEXT_CONFIG } from './contextConfig';

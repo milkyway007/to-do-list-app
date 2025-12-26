@@ -1,9 +1,11 @@
 import { type ReactNode, useState } from 'react';
 
-import { type Context } from './model/Context';
-import { type Day } from './model/Day';
-import { type TaskList } from './model/TaskList';
-import { type VerticalMenuButtonProps } from './model/VerticalMenuButton';
+import { validate } from './services/context/contextWithTaskListValidator';
+
+import { type VerticalMenuButtonProps } from './model/ui/VerticalMenuButton';
+import { type ContextViewModel } from './model/viewModel/ContextViewModel';
+import { type DayWithTaskViewModel } from './model/viewModel/DayWithTaskViewModel';
+import { type TaskListViewModel } from './model/viewModel/TaskListViewModel';
 
 import { type ContextName, contexts } from './constants/context';
 import { CONTEXT_CONFIG } from './constants/contextConfig';
@@ -39,12 +41,8 @@ export function App() {
 	 */
 	function getCurrentContextLayout(
 		name: ContextName,
-		taskList: TaskList | undefined,
+		taskList: TaskListViewModel,
 	): ReactNode {
-		if (!taskList) {
-			return null;
-		}
-
 		return (
 			<div className="content block task-list-container">
 				<div className="task-list-header">
@@ -53,7 +51,7 @@ export function App() {
 				<div className="task-list-body">
 					{taskList.days.length > 0 && (
 						<ul>
-							{taskList.days.map((day: Day) => {
+							{taskList.days.map((day: DayWithTaskViewModel) => {
 								return (
 									<li key={day.id}>
 										<DayTaskList day={day} />
@@ -67,14 +65,17 @@ export function App() {
 		);
 	}
 
-	const selectedContext: Context | undefined = contexts.find(
+	const selectedContext: ContextViewModel | undefined = contexts.find(
 		(x) => x.name === selectedContextName,
 	);
 
-	const currentContext = getCurrentContextLayout(
-		selectedContextName,
-		selectedContext?.taskList,
-	);
+	let currentContext = undefined;
+	if (selectedContext && validate(selectedContext)) {
+		currentContext = getCurrentContextLayout(
+			selectedContextName,
+			selectedContext.taskList,
+		);
+	}
 
 	return (
 		<div
@@ -87,7 +88,7 @@ export function App() {
 						{verticalMenuButtons.map((item: VerticalMenuButtonProps) => {
 							return (
 								<li
-									key={item.id}
+									key={item.contextName}
 									onClick={() => {
 										onVerticalMenuButtonClicked(item.contextName);
 									}}

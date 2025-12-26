@@ -20,7 +20,6 @@ export function ToggleAddTaskButton({
 			onClick={toggleIsAdding}
 		>
 			<IconButton
-				id="c036d75a-8df0-42e6-9ca2-3fdf862e0c2b"
 				contextName="AddTask"
 				className={['hover-text-danger', 'pl-0']}
 			/>

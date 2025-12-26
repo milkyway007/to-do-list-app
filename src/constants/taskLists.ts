@@ -1,9 +1,9 @@
-import { type TaskList } from '../model/TaskList';
+import { type TaskListViewModel } from '../model/viewModel/TaskListViewModel';
 
 import { type TaskListContextName } from './context';
 import { CONTEXT_CONFIG } from './contextConfig';
 
-export const taskLists: Record<TaskListContextName, TaskList> = {
+export const taskLists: Record<TaskListContextName, TaskListViewModel> = {
 	Today: {
 		id: 'f22a1a18-7191-461c-a179-75906bce7785',
 		header: CONTEXT_CONFIG.Today.label,
@@ -14,7 +14,6 @@ export const taskLists: Record<TaskListContextName, TaskList> = {
 				tasks: [],
 			},
 		],
-		overdue: [],
 	},
 
 	Upcoming: {
@@ -27,6 +26,5 @@ export const taskLists: Record<TaskListContextName, TaskList> = {
 				tasks: [],
 			},
 		],
-		overdue: [],
 	},
 };

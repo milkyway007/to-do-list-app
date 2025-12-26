@@ -1,4 +1,4 @@
-import { type Context } from '../model/Context';
+import { type ContextViewModel } from '../model/viewModel/ContextViewModel';
 
 import { CONTEXT_CONFIG } from './contextConfig';
 import { taskLists } from './taskLists';
@@ -14,7 +14,7 @@ export const ContextLabel: Record<ContextName, string> = Object.fromEntries(
 	Object.entries(CONTEXT_CONFIG).map(([key, value]) => [key, value.label]),
 ) as Record<ContextName, string>;
 
-export const contexts: Context[] = (
+export const contexts: ContextViewModel[] = (
 	Object.keys(CONTEXT_CONFIG) as ContextName[]
 ).map((name) => ({
 	id: name, // stable ID

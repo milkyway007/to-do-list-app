@@ -8,7 +8,6 @@ import { CONTEXT_CONFIG } from '../../../constants/contextConfig';
 import './IconButton.css';
 
 export interface IconButtonProps {
-	id: string;
 	contextName: ContextName;
 	className?: string[];
 	isActive?: boolean;
