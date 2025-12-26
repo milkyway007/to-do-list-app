@@ -58,19 +58,13 @@ export default defineConfig([
 				'error',
 				{
 					groups: [
-						['^react', '^@?\\w'],
-						['^bulma/(.*)$'],
-						['^@fortawesome/(.*)$'],
+						['^.*/API/.*$'],
 						['^.*/services/.*$'],
 						['^.*/model/.*$'],
 						['^.*/utils/.*$'],
 						['^.*/constants/.*$'],
 						['^.*/components/.*$'],
-						[
-							'^(?!.*(services|model|utils|constants|components|module.css).*)[./].*',
-						],
 						['^[./]'],
-						['^(.*)module.css$'],
 					],
 				},
 			],
