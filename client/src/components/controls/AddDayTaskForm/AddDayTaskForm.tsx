@@ -1,0 +1,93 @@
+import { useState } from 'react';
+
+import { type TaskViewModel } from '../../../model/viewModel/TaskViewModel.ts';
+
+import './AddDayTaskForm.css';
+
+interface AddDayTaskFormProps {
+	toggleIsAdding: () => void;
+	addTask: (task: TaskViewModel) => void;
+}
+
+const initialTask: TaskViewModel = {
+	id: '',
+	title: '',
+	description: '',
+};
+
+/**
+ * AddDayTaskForm
+ * Allows creating a new day task with title and description.
+ */
+export function AddDayTaskForm({
+	toggleIsAdding,
+	addTask,
+}: AddDayTaskFormProps) {
+	const [newTask, setNewTask] = useState<TaskViewModel>(initialTask);
+
+	/**
+	 * Updates the task title in the state when the textarea changes.
+	 */
+	function onTitleChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
+		setNewTask((prev) => ({
+			...prev,
+			title: event.target.value,
+		}));
+	}
+
+	/**
+	 * Updates the task description in the state when the textarea changes.
+	 */
+	function onDescriptionChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
+		setNewTask((prev) => ({
+			...prev,
+			description: event.target.value,
+		}));
+	}
+
+	/**
+	 * Updates the task description in the state when the textarea changes.
+	 */
+	function onAddTaskButtonClicked() {
+		addTask({ ...newTask });
+		setNewTask(initialTask);
+		toggleIsAdding();
+	}
+
+	return (
+		<form className="box add-day-task-form m-0 mt-1 p-0">
+			<div className="add-day-task-form-block m-4">
+				<textarea
+					className="textarea auto-textarea p-0"
+					placeholder="Discuss thesis tomorrow morning"
+					value={newTask.title}
+					rows={1}
+					onChange={onTitleChanged}
+				></textarea>
+				<textarea
+					className="textarea auto-textarea p-0"
+					placeholder="Description"
+					value={newTask.description}
+					rows={1}
+					onChange={onDescriptionChanged}
+				></textarea>
+			</div>
+			<div className="buttons is-grouped add-day-task-form-footer p-4">
+				<button
+					type="button"
+					className="button is-light right"
+					onClick={toggleIsAdding}
+				>
+					Cancel
+				</button>
+				<button
+					type="button"
+					className="button is-danger right"
+					onClick={onAddTaskButtonClicked}
+				>
+					Add task
+				</button>
+			</div>
+		</form>
+	);
+}
