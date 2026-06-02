@@ -19,10 +19,10 @@
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"moduleDetection": "force",
-		"jsx": "react-jsx",
+		"jsx": "react",
 		"erasableSyntaxOnly": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true
 	},
-	"include": ["client/src", "server/src"]
+	"include": ["src/client/src", "server/src", "src/client/main.tsx", "src/client/App.tsx", "src/client/services", "src/client/model", "src/client/constants", "src/components"]
 }

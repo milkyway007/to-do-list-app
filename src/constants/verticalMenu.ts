@@ -1,7 +1,7 @@
 import { type VerticalMenuButtonProps } from '../model/ui/VerticalMenuButton.ts';
 
-import { type ContextName } from './context.ts';
-import { CONTEXT_CONFIG } from './contextConfig.ts';
+import { type ContextName } from './context.js';
+import { CONTEXT_CONFIG } from './contextConfig.js';
 
 export const MENU_ORDER = [
 	'AddTask',

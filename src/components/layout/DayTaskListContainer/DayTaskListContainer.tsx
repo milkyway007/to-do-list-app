@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { type DayWithTaskViewModel } from '../../../model/viewModel/DayWithTaskViewModel.ts';
 import { type TaskViewModel } from '../../../model/viewModel/TaskViewModel.ts';
 
-import { AddDayTaskForm } from '../../controls/AddDayTaskForm/AddDayTaskForm.tsx';
-import { ToggleAddTaskButton } from '../../controls/ToggleAddTaskButton/ToggleAddTaskButton.tsx';
-import { DayHeader } from '../DayHeader/DayHeader.tsx';
+import { AddDayTaskForm } from '../../controls/AddDayTaskForm/AddDayTaskForm.js';
+import { ToggleAddTaskButton } from '../../controls/ToggleAddTaskButton/ToggleAddTaskButton.js';
+import { DayHeader } from '../DayHeader/DayHeader.js';
 
 import './DayTaskListContainer.css';
 

@@ -1,4 +1,4 @@
-import { IconButton } from '../IconButton/IconButton.tsx';
+import { IconButton } from '../IconButton/IconButton.js';
 
 import './ToggleAddTaskButton.css';
 
