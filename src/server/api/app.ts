@@ -1,24 +1,16 @@
 import express from 'express';
+import core from 'express-serve-static-core';
 import ViteExpress from 'vite-express';
 import { PORT } from './constants/constants.ts';
+import taskRouter from './routes/taskRoutes.ts';
 
-const app = express();
+const app: core.Express = express();
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/*
-export interface Task {
-	id: string;
-	title: string;
-	description: string;
-}
-*/
-app.post('/api/task', (req, res) => {
-	const { title, description } = req.body;
-	console.log('Received task:', { title, description });
-	res.status(201).json({ message: 'Task created successfully' });
-});
+app.use('/api/task', taskRouter);
 
 ViteExpress.listen(app, PORT, () => {
-	console.log('Server is listening on port 3000...');
+	console.log(`Server is listening on port ${PORT}...`);
 });
