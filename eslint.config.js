@@ -9,19 +9,31 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-	globalIgnores(['node_modules/**', 'public/**']),
+	globalIgnores([
+		'node_modules/**',
+		'dist/**',
+		'build/**',
+		'public/**',
+		'.api/**',
+		'vite.config.ts',
+		'eslint.config.js',
+	]),
 	eslint.configs.recommended,
-	tseslint.configs.recommendedTypeChecked,
 	{
+		files: ['src/**/*.{ts,tsx}'],
+
 		languageOptions: {
-			parserOptions: {
-				projectService: true,
-				tsconfigRootDir: import.meta.dirname,
-			},
+		parserOptions: {
+			projectService: true,
+			tsconfigRootDir: import.meta.dirname,
 		},
+		},
+
+		extends: [
+		tseslint.configs.recommendedTypeChecked,
+		tseslint.configs.stylisticTypeChecked,
+		],
 	},
-	tseslint.configs.strictTypeChecked,
-	tseslint.configs.stylisticTypeChecked,
 	reactRefresh.configs.vite,
 	jsdoc({
 		config: 'flat/recommended',
@@ -41,11 +53,7 @@ export default defineConfig([
 		},
 	}),
 	{
-		files: ['**/*.js'],
-		extends: [tseslint.configs.disableTypeChecked],
-	},
-	{
-		files: ['**/*.{js,jsx,ts,tsx}'],
+		files: ['src/**/*.{js,jsx,ts,tsx}'],
 		plugins: {
 			'simple-import-sort': simpleImportSort,
 			import: importPlugin,
@@ -61,6 +69,8 @@ export default defineConfig([
 						['^react', '^@?\\w'],
 						['^bulma/(.*)$'],
 						['^@fortawesome/(.*)$'],
+
+						
 						['^.*/services/.*$'],
 						['^.*/model/.*$'],
 						['^.*/utils/.*$'],
@@ -81,5 +91,20 @@ export default defineConfig([
 			'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
 			'prettier/prettier': 'error',
 		},
+	},
+	{
+		files: ['src/**/*.{ts,tsx}'],
+		rules: {
+			'@typescript-eslint/restrict-template-expressions': [
+				'error',
+				{
+					allowNumber: true,
+				},
+			],
+		},
+	},
+	{
+		files: ['src/**/*.js'],
+		extends: [tseslint.configs.disableTypeChecked],
 	},
 ]);

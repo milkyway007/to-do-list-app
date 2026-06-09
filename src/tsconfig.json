@@ -2,6 +2,6 @@
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
 		"module": "NodeNext",
-		"jsx": "react-jsx",
-	},
+		"jsx": "react-jsx"
+	}
 }
