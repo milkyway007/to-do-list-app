@@ -69,15 +69,15 @@ export default defineConfig([
 						['^react', '^@?\\w'],
 						['^bulma/(.*)$'],
 						['^@fortawesome/(.*)$'],
-
-						
+						['^.*/routes/.*$'],
 						['^.*/services/.*$'],
+						['^.*/domain/.*$'],
 						['^.*/model/.*$'],
 						['^.*/utils/.*$'],
 						['^.*/constants/.*$'],
 						['^.*/components/.*$'],
 						[
-							'^(?!.*(services|model|utils|constants|components|module.css).*)[./].*',
+							'^(?!.*(routes|services|model|utils|constants|components|module.css).*)[./].*',
 						],
 						['^[./]'],
 						['^(.*)module.css$'],

@@ -2,9 +2,9 @@ import express from 'express';
 import core from 'express-serve-static-core';
 import ViteExpress from 'vite-express';
 
-import { PORT } from './constants/constants.ts';
-
 import taskRouter from './routes/taskRoutes.ts';
+
+import { PORT } from './constants/constants.ts';
 
 const app: core.Express = express();
 
