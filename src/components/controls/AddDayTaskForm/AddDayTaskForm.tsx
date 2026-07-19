@@ -6,70 +6,62 @@ import './AddDayTaskForm.css';
 
 interface AddDayTaskFormProps {
 	toggleIsAdding: () => void;
-	addTask: (task: TaskViewModel) => void;
 }
 
-const initialTask: TaskViewModel = {
-	id: '',
-	title: '',
-	description: '',
-};
+type EditableTaskField = 'title' | 'description';
 
 /**
  * AddDayTaskForm
  * Allows creating a new day task with title and description.
  */
 export function AddDayTaskForm({
-	toggleIsAdding,
-	addTask,
+	toggleIsAdding
 }: AddDayTaskFormProps) {
-	const [newTask, setNewTask] = useState<TaskViewModel>(initialTask);
+	const [enteredTask, setEnteredTask] = useState<TaskViewModel>({
+		id: '',
+		title: '',
+		description: '',
+	});
 
 	/**
-	 * Updates the task title in the state when the textarea changes.
+	 * Handles task form submission and closes the add task dialog.
 	 */
-	function onTitleChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
-		setNewTask((prev) => ({
-			...prev,
-			title: event.target.value,
-		}));
-	}
+	function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+		event.preventDefault();
 
-	/**
-	 * Updates the task description in the state when the textarea changes.
-	 */
-	function onDescriptionChanged(event: React.ChangeEvent<HTMLTextAreaElement>) {
-		setNewTask((prev) => ({
-			...prev,
-			description: event.target.value,
-		}));
-	}
+		console.log('Entered task: ', enteredTask);
 
-	/**
-	 * Updates the task description in the state when the textarea changes.
-	 */
-	function onAddTaskButtonClicked() {
-		addTask({ ...newTask });
-		setNewTask(initialTask);
 		toggleIsAdding();
 	}
 
+	/**
+	 * Updates the corresponding task property with the value entered by the user.
+	 */
+	function handleInputChange(identifier: EditableTaskField, event: React.ChangeEvent<HTMLTextAreaElement>) {
+		setEnteredTask((prevTask) => ({
+			...prevTask,
+			[identifier]: event.target.value,
+		}));
+	}
+
 	return (
-		<form className="box add-day-task-form m-0 mt-1 p-0">
+		<form className="box add-day-task-form m-0 mt-1 p-0" onSubmit={handleSubmit}>
 			<div className="add-day-task-form-block m-4">
 				<textarea
 					className="textarea auto-textarea p-0"
 					placeholder="Discuss thesis tomorrow morning"
-					value={newTask.title}
+					value={enteredTask.title}
 					rows={1}
-					onChange={onTitleChanged}
+					onChange={(event) => handleInputChange('title', event)}
+					name="title"
 				></textarea>
 				<textarea
 					className="textarea auto-textarea p-0"
 					placeholder="Description"
-					value={newTask.description}
+					value={enteredTask.description}
 					rows={1}
-					onChange={onDescriptionChanged}
+					onChange={(event) => handleInputChange('description', event)}
+					name="description"
 				></textarea>
 			</div>
 			<div className="buttons is-grouped add-day-task-form-footer p-4">
@@ -81,9 +73,7 @@ export function AddDayTaskForm({
 					Cancel
 				</button>
 				<button
-					type="button"
 					className="button is-danger right"
-					onClick={onAddTaskButtonClicked}
 				>
 					Add task
 				</button>

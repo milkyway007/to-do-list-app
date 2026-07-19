@@ -27,13 +27,6 @@ export function DayTaskList({ day }: DayTaskListProps) {
 		setIsAdding((prev) => !prev);
 	};
 
-	/**
-	 * Adds a new task to the tasks list of the current day.
-	 */
-	function addTask(task: TaskViewModel) {
-		setTasks((prev) => [...prev, task]);
-	}
-
 	return (
 		<div className="day-task-list">
 			<DayHeader date={day.date} />
@@ -61,7 +54,6 @@ export function DayTaskList({ day }: DayTaskListProps) {
 			{isAdding ? (
 				<AddDayTaskForm
 					toggleIsAdding={toggleIsAdding}
-					addTask={addTask}
 				/>
 			) : (
 				<ToggleAddTaskButton toggleIsAdding={toggleIsAdding} />
