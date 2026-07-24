@@ -52,9 +52,7 @@ export function DayTaskList({ day }: DayTaskListProps) {
 			</ol>
 
 			{isAdding ? (
-				<AddDayTaskForm
-					toggleIsAdding={toggleIsAdding}
-				/>
+				<AddDayTaskForm toggleIsAdding={toggleIsAdding} />
 			) : (
 				<ToggleAddTaskButton toggleIsAdding={toggleIsAdding} />
 			)}

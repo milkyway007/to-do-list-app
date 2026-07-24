@@ -1,3 +1,6 @@
-import { bootstrap } from "./bootstrap.ts";
+import { bootstrap } from './bootstrap.ts';
 
-bootstrap();
+bootstrap().catch((error) => {
+	console.error('Fatal startup error:', error);
+	process.exit(1);
+});

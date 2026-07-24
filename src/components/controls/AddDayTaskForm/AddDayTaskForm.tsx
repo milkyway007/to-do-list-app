@@ -14,9 +14,7 @@ type EditableTaskField = 'title' | 'description';
  * AddDayTaskForm
  * Allows creating a new day task with title and description.
  */
-export function AddDayTaskForm({
-	toggleIsAdding
-}: AddDayTaskFormProps) {
+export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 	const [enteredTask, setEnteredTask] = useState<TaskViewModel>({
 		id: '',
 		title: '',
@@ -37,7 +35,10 @@ export function AddDayTaskForm({
 	/**
 	 * Updates the corresponding task property with the value entered by the user.
 	 */
-	function handleInputChange(identifier: EditableTaskField, event: React.ChangeEvent<HTMLTextAreaElement>) {
+	function handleInputChange(
+		identifier: EditableTaskField,
+		event: React.ChangeEvent<HTMLTextAreaElement>,
+	) {
 		setEnteredTask((prevTask) => ({
 			...prevTask,
 			[identifier]: event.target.value,
@@ -45,7 +46,10 @@ export function AddDayTaskForm({
 	}
 
 	return (
-		<form className="box add-day-task-form m-0 mt-1 p-0" onSubmit={handleSubmit}>
+		<form
+			className="box add-day-task-form m-0 mt-1 p-0"
+			onSubmit={handleSubmit}
+		>
 			<div className="add-day-task-form-block m-4">
 				<textarea
 					className="textarea auto-textarea p-0"
@@ -72,11 +76,7 @@ export function AddDayTaskForm({
 				>
 					Cancel
 				</button>
-				<button
-					className="button is-danger right"
-				>
-					Add task
-				</button>
+				<button className="button is-danger right">Add task</button>
 			</div>
 		</form>
 	);

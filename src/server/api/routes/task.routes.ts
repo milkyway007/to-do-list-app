@@ -1,6 +1,6 @@
 import express, { type Request, type Response, Router } from 'express';
 
-import { type Task } from '../../domain/task.ts';
+import { type Task } from '../../domain/task.entity.ts';
 
 const taskRouter: Router = express.Router();
 
