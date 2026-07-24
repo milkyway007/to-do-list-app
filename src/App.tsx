@@ -2,10 +2,10 @@ import { type ReactNode, useState } from 'react';
 
 import { validate } from './services/context/contextWithTaskListValidator.ts';
 
-import { type VerticalMenuButtonProps } from './model/ui/VerticalMenuButton.ts';
-import { type ContextViewModel } from './model/viewModel/ContextViewModel.ts';
-import { type DayWithTaskViewModel } from './model/viewModel/DayWithTaskViewModel.ts';
-import { type TaskListViewModel } from './model/viewModel/TaskListViewModel.ts';
+import { type VerticalMenuButtonProps } from './model/ui/verticalMenuButton.ts';
+import { type ContextViewModel } from './model/viewModel/contextViewModel.ts';
+import { type DayWithTaskViewModel } from './model/viewModel/dayWithTaskViewModel.ts';
+import { type TaskListViewModel } from './model/viewModel/taskListViewModel.ts';
 
 import { type ContextName, contexts } from './constants/context.ts';
 import { CONTEXT_CONFIG } from './constants/contextConfig.ts';

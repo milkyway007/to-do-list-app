@@ -1,4 +1,4 @@
-import { type TaskListViewModel } from '../model/viewModel/TaskListViewModel.ts';
+import { type TaskListViewModel } from '../model/viewModel/taskListViewModel.ts';
 
 import { type TaskListContextName } from './context.js';
 import { CONTEXT_CONFIG } from './contextConfig.js';

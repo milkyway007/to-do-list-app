@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { type DayWithTaskViewModel } from '../../../model/viewModel/DayWithTaskViewModel.ts';
-import { type TaskViewModel } from '../../../model/viewModel/TaskViewModel.ts';
+import { type DayWithTaskViewModel } from '../../../model/viewModel/dayWithTaskViewModel.ts';
+import { type TaskViewModel } from '../../../model/viewModel/taskViewModel.ts';
 
 import { AddDayTaskForm } from '../../controls/AddDayTaskForm/AddDayTaskForm.js';
 import { ToggleAddTaskButton } from '../../controls/ToggleAddTaskButton/ToggleAddTaskButton.js';

@@ -1,4 +1,4 @@
-import { type ContextViewModel } from '../model/viewModel/ContextViewModel.ts';
+import { type ContextViewModel } from '../model/viewModel/contextViewModel.ts';
 
 import { CONTEXT_CONFIG } from './contextConfig.js';
 import { taskLists } from './taskLists.js';
