@@ -1,12 +1,16 @@
 import { type Task } from '../../../domain/task.entity.ts';
 
-import { type TaskCreateInput } from '../../../application/inputs/task/task.create.input.ts';
+import { type CreateTaskInput } from '../../../application/inputs/task/create-task.input.ts';
 import { type ITaskRepository } from '../../../domain.interfaces/repositories/task.repository.interface.ts';
 import { TaskMapper } from '../../mappers/task.mapper.ts';
 
 import { TaskModel } from '../../models/task.model.ts';
 
 export class MongoTaskRepository implements ITaskRepository {
+	public async findAll(): Promise<Task[]> {
+		return await TaskModel.find({});
+	}
+
 	public async exists(): Promise<boolean> {
 		const result = await TaskModel.exists({});
 
@@ -17,7 +21,7 @@ export class MongoTaskRepository implements ITaskRepository {
 		return TaskModel.countDocuments().exec();
 	}
 
-	public async insertMany(tasks: TaskCreateInput[]): Promise<Task[]> {
+	public async insertMany(tasks: CreateTaskInput[]): Promise<Task[]> {
 		if (tasks.length === 0) {
 			return [];
 		}
