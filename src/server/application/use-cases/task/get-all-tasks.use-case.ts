@@ -1,14 +1,15 @@
-import type { ITaskRepository } from "../../../domain.interfaces/repositories/task.repository.interface.ts";
-import type { Task } from "../../../domain/task.entity.ts";
+import { type Task } from '../../../domain/task.entity.ts';
+
+import { type ITaskRepository } from '../../../domain.interfaces/repositories/task.repository.interface.ts';
 
 export class GetAllTasksUseCase {
-    private readonly taskRepository: ITaskRepository
+	private readonly taskRepository: ITaskRepository;
 
-    constructor(taskRepository: ITaskRepository ) {
-        this.taskRepository = taskRepository;
-    }
+	constructor(taskRepository: ITaskRepository) {
+		this.taskRepository = taskRepository;
+	}
 
-    async execute(): Promise<Task[]> {
-        return this.taskRepository.findAll();
-    }
+	async execute(): Promise<Task[]> {
+		return this.taskRepository.getAll();
+	}
 }

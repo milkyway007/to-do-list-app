@@ -6,5 +6,5 @@ export interface ITaskRepository {
 	count(): Promise<number>;
 	exists(): Promise<boolean>;
 	insertMany(tasks: CreateTaskInput[]): Promise<Task[]>;
-  findAll(): Promise<Task[]>;
+	getAll(): Promise<Task[]>;
 }

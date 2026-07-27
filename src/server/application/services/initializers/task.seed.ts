@@ -1,6 +1,6 @@
-import { type TaskCreateInput } from '../../inputs/task/create-task.input.ts';
+import { type CreateTaskInput } from '../../inputs/task/create-task.input.ts';
 
-export const defaultTasks: TaskCreateInput[] = [
+export const defaultTasks: CreateTaskInput[] = [
 	{
 		title: 'test 1',
 		description: 'test 1',

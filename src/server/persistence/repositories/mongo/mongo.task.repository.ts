@@ -7,7 +7,7 @@ import { TaskMapper } from '../../mappers/task.mapper.ts';
 import { TaskModel } from '../../models/task.model.ts';
 
 export class MongoTaskRepository implements ITaskRepository {
-	public async findAll(): Promise<Task[]> {
+	public async getAll(): Promise<Task[]> {
 		return await TaskModel.find({});
 	}
 
