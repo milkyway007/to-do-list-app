@@ -2,13 +2,23 @@ import mongoose from 'mongoose';
 
 import { registerMongoEvents } from './mongoose.events.ts';
 
+/**
+ *
+ */
 export class DatabaseConnector {
 	private readonly connectionString: string;
 
+	/**
+	 *
+	 * @param connectionString
+	 */
 	constructor(connectionString: string) {
 		this.connectionString = connectionString;
 	}
 
+	/**
+	 *
+	 */
 	async run() {
 		try {
 			registerMongoEvents();

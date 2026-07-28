@@ -6,6 +6,10 @@ type AsyncFunction = (
 	next: NextFunction,
 ) => Promise<any>;
 
+/**
+ *
+ * @param fn
+ */
 export const asyncHandler = (fn: AsyncFunction) => {
 	return (req: Request, res: Response, next: NextFunction) => {
 		Promise.resolve(fn(req, res, next)).catch(next);

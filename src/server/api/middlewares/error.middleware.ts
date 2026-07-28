@@ -2,6 +2,13 @@ import { type NextFunction, type Request, type Response } from 'express';
 
 import { ApiError } from '../error.types.ts';
 
+/**
+ *
+ * @param err
+ * @param req
+ * @param res
+ * @param _
+ */
 export const errorHandler = (
 	err: Error | ApiError,
 	req: Request,

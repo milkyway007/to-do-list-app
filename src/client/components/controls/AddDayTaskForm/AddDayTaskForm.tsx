@@ -13,6 +13,8 @@ type EditableTaskField = 'title' | 'description';
 /**
  * AddDayTaskForm
  * Allows creating a new day task with title and description.
+ * @param root0
+ * @param root0.toggleIsAdding
  */
 export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 	const [enteredTask, setEnteredTask] = useState<TaskViewModel>({
@@ -23,6 +25,7 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 
 	/**
 	 * Handles task form submission and closes the add task dialog.
+	 * @param event
 	 */
 	function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -34,6 +37,8 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 
 	/**
 	 * Updates the corresponding task property with the value entered by the user.
+	 * @param identifier
+	 * @param event
 	 */
 	function handleInputChange(
 		identifier: EditableTaskField,

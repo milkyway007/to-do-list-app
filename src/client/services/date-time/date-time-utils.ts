@@ -1,5 +1,6 @@
 /**
  * Checks whether a given date is today.
+ * @param date
  */
 export function isToday(date: Date): boolean {
 	const today = new Date();
@@ -13,6 +14,7 @@ export function isToday(date: Date): boolean {
 
 /**
  * Checks whether a given date is yesterday.
+ * @param date
  */
 export function isYesterday(date: Date): boolean {
 	const today = new Date();
@@ -36,6 +38,7 @@ const weekdays = [
 
 /**
  * Returns the name of the weekday for a given date.
+ * @param date
  */
 export function getWeekdayName(date: Date): string {
 	return weekdays[date.getDay()];

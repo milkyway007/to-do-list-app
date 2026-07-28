@@ -30,6 +30,7 @@ export function App() {
 	/**
 	 * Handles clicks on vertical menu buttons.
 	 * Updates the currently selected context.
+	 * @param contextName
 	 */
 	function onVerticalMenuButtonClicked(contextName: ContextName): void {
 		setSelectedContextName(contextName);
@@ -38,6 +39,8 @@ export function App() {
 	/**
 	 * Renders the layout for a given context.
 	 * If the context has no task list, returns null.
+	 * @param name
+	 * @param taskList
 	 */
 	function getCurrentContextLayout(
 		name: ContextName,

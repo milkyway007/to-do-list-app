@@ -2,10 +2,18 @@ import { type ISettingRepository } from '../../../domain.interfaces/repositories
 
 import { TaskInitializer } from './task.initializer.ts';
 
+/**
+ *
+ */
 export class DatabaseInitializer {
 	private readonly settingRepository: ISettingRepository;
 	private readonly taskInitializer: TaskInitializer;
 
+	/**
+	 *
+	 * @param settingRepository
+	 * @param taskInitializer
+	 */
 	constructor(
 		settingRepository: ISettingRepository,
 		taskInitializer: TaskInitializer,
@@ -14,6 +22,9 @@ export class DatabaseInitializer {
 		this.taskInitializer = taskInitializer;
 	}
 
+	/**
+	 *
+	 */
 	public async run(): Promise<void> {
 		if (await this.settingRepository.isInitialized()) {
 			return;

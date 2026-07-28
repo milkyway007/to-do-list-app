@@ -5,6 +5,8 @@ import './VerticalMenu.css';
 /**
  * VerticalMenu
  * A layout component that renders a vertical navigation/menu container.
+ * @param root0
+ * @param root0.children
  */
 export function VerticalMenu({ children }: PropsWithChildren) {
 	return (

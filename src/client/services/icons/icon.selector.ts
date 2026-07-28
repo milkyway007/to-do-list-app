@@ -12,6 +12,7 @@ import { type ContextName } from '../../constants/context.ts';
 
 /**
  * Returns the FontAwesome icon corresponding to a given context name.
+ * @param contextName
  */
 export default function select(contextName: ContextName): IconDefinition {
 	switch (contextName) {

@@ -1,6 +1,12 @@
 import express from 'express';
 
+/**
+ *
+ */
 export class ServeRunner {
+	/**
+	 *
+	 */
 	public run() {
 		const app = express();
 

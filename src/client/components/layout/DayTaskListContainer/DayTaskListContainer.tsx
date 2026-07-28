@@ -15,7 +15,9 @@ export interface DayTaskListProps {
 }
 
 /**
- * DayTaskList
+ * DayTaskList.
+ * @param root0
+ * @param root0.day
  */
 export function DayTaskList({ day }: DayTaskListProps) {
 	const [isAdding, setIsAdding] = useState<boolean>(false);

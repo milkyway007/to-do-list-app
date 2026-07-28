@@ -16,6 +16,10 @@ export interface IconButtonProps {
 /**
  * IconButton
  * A reusable button that displays an icon (from FontAwesome) and optional text.
+ * @param root0
+ * @param root0.contextName
+ * @param root0.className
+ * @param root0.isActive
  */
 export function IconButton({
 	contextName,

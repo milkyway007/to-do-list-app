@@ -2,13 +2,23 @@ import { type ITaskRepository } from '../../../domain.interfaces/repositories.in
 
 import { defaultTasks } from './task.seed.ts';
 
+/**
+ *
+ */
 export class TaskInitializer {
 	private readonly taskRepository: ITaskRepository;
 
+	/**
+	 *
+	 * @param taskRepository
+	 */
 	constructor(taskRepository: ITaskRepository) {
 		this.taskRepository = taskRepository;
 	}
 
+	/**
+	 *
+	 */
 	public async run(): Promise<void> {
 		if (await this.taskRepository.exists()) {
 			return;

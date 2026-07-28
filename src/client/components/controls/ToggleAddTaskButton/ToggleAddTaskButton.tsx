@@ -9,6 +9,8 @@ interface ToggleAddTaskButtonProps {
 /**
  * ToggleAddTaskButton
  * Button that toggles the Add Day Task form.
+ * @param root0
+ * @param root0.toggleIsAdding
  */
 export function ToggleAddTaskButton({
 	toggleIsAdding,

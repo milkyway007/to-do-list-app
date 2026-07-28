@@ -4,6 +4,7 @@ import { type ContextWithTaskListViewModel } from '../../model/view-model/contex
 /**
  * Type guard to check whether a ContextViewModel object
  * is actually a ContextWithTaskListViewModel with a defined taskList.
+ * @param context
  */
 export function validate(
 	context: ContextViewModel,

@@ -40,8 +40,26 @@ export default defineConfig([
 		rules: {
 			'jsdoc/require-returns-type': 0,
 			'jsdoc/require-param-type': 0,
-			'jsdoc/require-param': 0,
-			'jsdoc/require-returns': 0,
+			'jsdoc/require-param': 'error',
+			'jsdoc/require-returns': 'error',
+			'jsdoc/require-param-description': 'error',
+			'jsdoc/require-returns-description': 'error',
+			'jsdoc/require-jsdoc': [
+				'error',
+				{
+					publicOnly: true,
+					require: {
+						ClassDeclaration: true,
+						MethodDefinition: true,
+						FunctionDeclaration:true,
+						ArrowFunctionExpression:true,
+						ClassExpression:true,
+						FunctionExpression:true
+					},
+				},
+			],
+			'jsdoc/require-description': 'error',
+			'jsdoc/require-description-complete-sentence': 'error',
 		},
 		settings: {
 			structuredTags: {
