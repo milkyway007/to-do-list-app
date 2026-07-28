@@ -1,8 +1,8 @@
 import { type Express } from 'express';
 
-import { createTaskRouter } from './routes/task.routes.ts';
+import { type Controllers } from '../controllers/controllers.ts';
 
-import { type Controllers } from './controllers/controllers.ts';
+import { createTaskRouter } from './task.routes.ts';
 
 export class RouteRegistrator {
 	private readonly app: Express;

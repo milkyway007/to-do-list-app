@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import { registerMongoEvents } from './mongooseEvents.ts';
+import { registerMongoEvents } from './mongoose.events.ts';
 
 export class DatabaseConnector {
 	private readonly connectionString: string;

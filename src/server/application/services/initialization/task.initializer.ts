@@ -1,4 +1,5 @@
-import { type ITaskRepository } from '../../../domain.interfaces/repositories/task.repository.interface.ts';
+import { type ITaskRepository } from '../../../domain.interfaces/repositories.interfaces/task.repository.interface.ts';
+
 import { defaultTasks } from './task.seed.ts';
 
 export class TaskInitializer {

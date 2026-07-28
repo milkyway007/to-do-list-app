@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-import { type DayWithTaskViewModel } from '../../../model/viewModel/dayWithTaskViewModel.ts';
-import { type TaskViewModel } from '../../../model/viewModel/taskViewModel.ts';
-
 import { AddDayTaskForm } from '../../controls/AddDayTaskForm/AddDayTaskForm.tsx';
 import { ToggleAddTaskButton } from '../../controls/ToggleAddTaskButton/ToggleAddTaskButton.tsx';
+
+import { type DayWithTaskViewModel } from '../../../model/view-model/day-with-task.view-model.ts';
+import { type TaskViewModel } from '../../../model/view-model/task.view-model.ts';
+
 import { DayHeader } from '../DayHeader/DayHeader.tsx';
 
 import './DayTaskListContainer.css';

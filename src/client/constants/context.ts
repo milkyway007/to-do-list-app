@@ -1,7 +1,7 @@
-import { type ContextViewModel } from '../model/viewModel/contextViewModel.ts';
+import { type ContextViewModel } from '../model/view-model/context.view-model.ts';
 
-import { CONTEXT_CONFIG } from './contextConfig.ts';
-import { taskLists } from './taskLists.ts';
+import { CONTEXT_CONFIG } from './context-config.ts';
+import { taskLists } from './task-lists.ts';
 
 export type ContextName = keyof typeof CONTEXT_CONFIG;
 export type TaskListContextName = {

@@ -1,6 +1,6 @@
 import { type Task } from '../../../domain/task.entity.ts';
 
-import { type ITaskRepository } from '../../../domain.interfaces/repositories/task.repository.interface.ts';
+import { type ITaskRepository } from '../../../domain.interfaces/repositories.interfaces/task.repository.interface.ts';
 
 export class GetAllTasksUseCase {
 	private readonly taskRepository: ITaskRepository;

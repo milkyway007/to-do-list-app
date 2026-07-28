@@ -1,4 +1,4 @@
-import { type ISettingRepository } from '../../../domain.interfaces/repositories/setting.repository.interface.ts';
+import { type ISettingRepository } from '../../../domain.interfaces/repositories.interfaces/setting.repository.interface.ts';
 
 import { SettingModel } from '../../models/setting.model.ts';
 

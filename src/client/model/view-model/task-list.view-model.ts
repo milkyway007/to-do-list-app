@@ -1,4 +1,4 @@
-import { type DayWithTaskViewModel } from './dayWithTaskViewModel.ts';
+import { type DayWithTaskViewModel } from './day-with-task.view-model.ts';
 
 export interface TaskListViewModel {
 	id: string;

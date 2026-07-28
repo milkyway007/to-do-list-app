@@ -1,7 +1,9 @@
+import { type CreateTaskInput } from '../../../application/inputs/task/create-task.input.ts';
+
 import { type Task } from '../../../domain/task.entity.ts';
 
-import { type CreateTaskInput } from '../../../application/inputs/task/create-task.input.ts';
-import { type ITaskRepository } from '../../../domain.interfaces/repositories/task.repository.interface.ts';
+import { type ITaskRepository } from '../../../domain.interfaces/repositories.interfaces/task.repository.interface.ts';
+
 import { TaskMapper } from '../../mappers/task.mapper.ts';
 
 import { TaskModel } from '../../models/task.model.ts';

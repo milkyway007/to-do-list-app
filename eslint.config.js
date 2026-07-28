@@ -55,13 +55,25 @@ export default defineConfig([
 	{
 		files: ['src/**/*.{js,jsx,ts,tsx}'],
 		plugins: {
-			'simple-import-sort': simpleImportSort,
 			import: importPlugin,
 			reactHooks: pluginObject,
 			prettier: prettierPlugin,
 		},
 		rules: {
 			quotes: ['error', 'single'],
+			'import/first': 'error',
+			'import/newline-after-import': 'error',
+			'import/no-duplicates': 'error',
+			'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
+			'prettier/prettier': 'error',
+		},
+	},
+	{
+		files: ['src/client/**/*.{ts,tsx}'],
+		plugins: {
+			'simple-import-sort': simpleImportSort,
+		},
+		rules: {
 			'simple-import-sort/imports': [
 				'error',
 				{
@@ -69,15 +81,27 @@ export default defineConfig([
 						['^react', '^@?\\w'],
 						['^bulma/(.*)$'],
 						['^@fortawesome/(.*)$'],
-						['^.*/routes/.*$'],
-						['^.*/services/.*$'],
-						['^.*/domain/.*$'],
-						['^.*/model/.*$'],
-						['^.*/utils/.*$'],
-						['^.*/constants/.*$'],
+
+						['^.*/assets/.*$'],
+
 						['^.*/components/.*$'],
+						['^.*/controls/.*$'],
+						['^.*/layout/.*$'],
+
+						['^.*/constants/.*$'],
+
+						['^.*/model/.*$'],
+						['^.*/ui/.*$'],
+						['^.*/view-model/.*$'],
+
+
+						['^.*/services/.*$'],
+						['^.*/context/.*$'],
+						['^.*/date-time/.*$'],
+						['^.*/icons/.*$'],
+
 						[
-							'^(?!.*(routes|services|model|utils|constants|components|module.css).*)[./].*',
+							'^(?!.*(assets|components|constants|model|services|module.css).*)[./].*',
 						],
 						['^[./]'],
 						['^(.*)module.css$'],
@@ -85,11 +109,69 @@ export default defineConfig([
 				},
 			],
 			'simple-import-sort/exports': 'error',
-			'import/first': 'error',
-			'import/newline-after-import': 'error',
-			'import/no-duplicates': 'error',
-			'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
-			'prettier/prettier': 'error',
+		},
+	},
+	{
+		files: ['src/server/**/*.{ts,tsx}'],
+		plugins: {
+			'simple-import-sort': simpleImportSort,
+		},
+		rules: {
+			'simple-import-sort/imports': [
+				'error',
+				{
+					groups: [
+						['^express$'],
+						['^vite-express$'],
+						['^mongoose$'],
+
+						//projects
+						['^.*/api/.*$'],
+						['^.*/application/.*$'],
+						['^.*/domain/(?!interfaces/).*$'],
+						['^.*/domain\\.interfaces/.*$'],
+						['^.*/persistence/(?!interfaces/).*$'],
+						['^.*/persistence\\.interfaces/.*$'],
+						
+						//api project
+						['^.*/constants/.*$'],
+						['^.*/dtos/.*$'],
+						['^.*/infrastructure/.*$'],
+						['^.*/middlewares/.*$'],
+						['^.*/utils/.*$'],
+						
+						//application project
+						['^.*/inputs/.*$'],
+						['^.*/services/.*$'],
+						['^.*/use-cases/.*$'],
+
+						//domain project
+						['^.*/repositories\\.interfaces/.*$'],
+
+						//persistence project
+						['^.*/database/.*$'],
+						['^.*/mappers/.*$'],
+						['^.*/models/.*$'],
+						['^.*/repositories/(?!interfaces/).*$'],
+
+						//persistence.interfaces project
+						['^.*/persistence\\.interfaces/.*$'],
+
+						//api project/infrastructure folder
+						['^.*/controllers/.*$'],
+						['^.*/routes/.*$'],
+
+						//application project/services folder/initialization folder
+						['^.*/initialization/(?!interfaces/).*$'],
+
+						//persistence.interfaces project/initialization folder
+						['^.*/initialization\\.interfaces/.*$'],
+
+						['^\\.'],
+					],
+				},
+			],
+			'simple-import-sort/exports': 'error',
 		},
 	},
 	{

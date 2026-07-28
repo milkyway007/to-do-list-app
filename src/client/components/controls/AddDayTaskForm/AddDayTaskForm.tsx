@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { type TaskViewModel } from '../../../model/viewModel/taskViewModel.ts';
+import { type TaskViewModel } from '../../../model/view-model/task.view-model.ts';
 
 import './AddDayTaskForm.css';
 

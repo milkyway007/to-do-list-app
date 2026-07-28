@@ -1,7 +1,7 @@
-import { type TaskListViewModel } from '../model/viewModel/taskListViewModel.ts';
+import { type TaskListViewModel } from '../model/view-model/task-list.view-model.ts';
 
 import { type TaskListContextName } from './context.ts';
-import { CONTEXT_CONFIG } from './contextConfig.ts';
+import { CONTEXT_CONFIG } from './context-config.ts';
 
 export const taskLists: Record<TaskListContextName, TaskListViewModel> = {
 	Today: {

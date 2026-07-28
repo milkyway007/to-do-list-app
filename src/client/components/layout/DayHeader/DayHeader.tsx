@@ -2,8 +2,8 @@ import {
 	getWeekdayName,
 	isToday,
 	isYesterday,
-} from '../../../services/dateTime/dateTimeUtils.ts';
-import { convert } from '../../../services/dateTime/monthToStringConverter.ts';
+} from '../../../services/date-time/date-time-utils.ts';
+import { convert } from '../../../services/date-time/month-to-string.converter.ts';
 
 import './DayHeader.css';
 

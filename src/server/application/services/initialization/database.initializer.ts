@@ -1,4 +1,5 @@
-import { type ISettingRepository } from '../../../domain.interfaces/repositories/setting.repository.interface.ts';
+import { type ISettingRepository } from '../../../domain.interfaces/repositories.interfaces/setting.repository.interface.ts';
+
 import { TaskInitializer } from './task.initializer.ts';
 
 export class DatabaseInitializer {

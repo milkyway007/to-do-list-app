@@ -1,5 +1,5 @@
-import { type ContextViewModel } from '../../model/viewModel/contextViewModel.ts';
-import { type ContextWithTaskListViewModel } from '../../model/viewModel/contextWithTaskListViewModel.ts';
+import { type ContextViewModel } from '../../model/view-model/context.view-model.ts';
+import { type ContextWithTaskListViewModel } from '../../model/view-model/context-with-task-list.view-model.ts';
 
 /**
  * Type guard to check whether a ContextViewModel object

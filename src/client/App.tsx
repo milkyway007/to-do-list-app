@@ -1,20 +1,20 @@
 import { type ReactNode, useState } from 'react';
 
-import { validate } from './services/context/contextWithTaskListValidator.ts';
-
-import { type VerticalMenuButtonProps } from './model/ui/verticalMenuButton.ts';
-import { type ContextViewModel } from './model/viewModel/contextViewModel.ts';
-import { type DayWithTaskViewModel } from './model/viewModel/dayWithTaskViewModel.ts';
-import { type TaskListViewModel } from './model/viewModel/taskListViewModel.ts';
-
-import { type ContextName, contexts } from './constants/context.ts';
-import { CONTEXT_CONFIG } from './constants/contextConfig.ts';
-import { verticalMenuButtons } from './constants/verticalMenu.ts';
-
 import { IconButton } from './components/controls/IconButton/IconButton.tsx';
 import { ContentWrapper } from './components/layout/ContentWrapper/ContentWrapper.tsx';
 import { DayTaskList } from './components/layout/DayTaskListContainer/DayTaskListContainer.tsx';
-import { VerticalMenu } from './components/layout/verticalMenu/VerticalMenu.tsx';
+import { VerticalMenu } from './components/layout/VerticalMenu/VerticalMenu.tsx';
+
+import { type ContextName, contexts } from './constants/context.ts';
+import { CONTEXT_CONFIG } from './constants/context-config.ts';
+import { verticalMenuButtons } from './constants/vertical-menu.ts';
+
+import { type VerticalMenuButtonProps } from './model/ui/vertical-menu-button.ts';
+import { type ContextViewModel } from './model/view-model/context.view-model.ts';
+import { type DayWithTaskViewModel } from './model/view-model/day-with-task.view-model.ts';
+import { type TaskListViewModel } from './model/view-model/task-list.view-model.ts';
+
+import { validate } from './services/context/context-with-task-list.validator.ts';
 
 import './App.css';
 
