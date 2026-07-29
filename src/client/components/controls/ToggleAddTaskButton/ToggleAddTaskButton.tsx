@@ -7,14 +7,13 @@ interface ToggleAddTaskButtonProps {
 }
 
 /**
- * ToggleAddTaskButton
- * Button that toggles the Add Day Task form.
- * @param root0
- * @param root0.toggleIsAdding
+ * Renders a button that toggles the add task form.
+ * @param props Component properties.
+ * @returns The rendered add task button component.
  */
-export function ToggleAddTaskButton({
-	toggleIsAdding,
-}: ToggleAddTaskButtonProps) {
+export function ToggleAddTaskButton(props: ToggleAddTaskButtonProps) {
+	const { toggleIsAdding } = props;
+
 	return (
 		<div
 			className="clickable"

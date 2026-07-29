@@ -14,33 +14,32 @@ import { type ContextViewModel } from './model/view-model/context.view-model.ts'
 import { type DayWithTaskViewModel } from './model/view-model/day-with-task.view-model.ts';
 import { type TaskListViewModel } from './model/view-model/task-list.view-model.ts';
 
-import { validate } from './services/context/context-with-task-list.validator.ts';
+import { isContextWithTaskList } from './services/context/context-with-task-list.validator.ts';
 
 import './App.css';
 
 /**
- * App
- * Main application component.
- * Handles the vertical menu selection and renders the corresponding task list content.
+ * Renders the main application component.
+ * Manages the selected task context and displays the corresponding task list.
+ * @returns The rendered app component.
  */
 export function App() {
 	const [selectedContextName, setSelectedContextName] =
 		useState<ContextName>('Today');
 
 	/**
-	 * Handles clicks on vertical menu buttons.
-	 * Updates the currently selected context.
-	 * @param contextName
+	 * Handles selection of a task context from the vertical menu.
+	 * @param contextName The selected task context.
 	 */
 	function onVerticalMenuButtonClicked(contextName: ContextName): void {
 		setSelectedContextName(contextName);
 	}
 
 	/**
-	 * Renders the layout for a given context.
-	 * If the context has no task list, returns null.
-	 * @param name
-	 * @param taskList
+	 * Creates the layout for the specified task context.
+	 * @param name The name of the selected context.
+	 * @param taskList The task list associated with the selected context.
+	 * @returns The rendered context layout.
 	 */
 	function getCurrentContextLayout(
 		name: ContextName,
@@ -73,7 +72,7 @@ export function App() {
 	);
 
 	let currentContext = undefined;
-	if (selectedContext && validate(selectedContext)) {
+	if (selectedContext && isContextWithTaskList(selectedContext)) {
 		currentContext = getCurrentContextLayout(
 			selectedContextName,
 			selectedContext.taskList,

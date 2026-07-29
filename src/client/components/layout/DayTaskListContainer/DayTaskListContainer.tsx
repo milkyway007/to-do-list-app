@@ -15,16 +15,17 @@ export interface DayTaskListProps {
 }
 
 /**
- * DayTaskList.
- * @param root0
- * @param root0.day
+ * Renders the list of tasks for a specific day.
+ * @param props Component properties.
+ * @returns The rendered task list component.
  */
-export function DayTaskList({ day }: DayTaskListProps) {
+export function DayTaskList(props: DayTaskListProps) {
+	const { day } = props;
 	const [isAdding, setIsAdding] = useState<boolean>(false);
 	const [tasks, setTasks] = useState<TaskViewModel[]>(day.tasks);
 
 	/**
-	 * Toggles the IsAdding state.
+	 * Toggles the visibility of the add task form.
 	 */
 	const toggleIsAdding = () => {
 		setIsAdding((prev) => !prev);

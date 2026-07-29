@@ -12,13 +12,12 @@ interface DayHeaderProps {
 }
 
 /**
- * DayHeader
- * Displays a header for a given date, showing the day, month,
- * weekday, and optionally 'Today' or 'Yesterday'.
- * @param root0
- * @param root0.date
+ * Renders a header for a task group associated with a specific date.
+ * @param props Component properties.
+ * @returns The rendered day header component.
  */
-export function DayHeader({ date }: DayHeaderProps) {
+export function DayHeader(props: DayHeaderProps) {
+	const { date } = props;
 	const todayLabel = isToday(date)
 		? 'Today'
 		: isYesterday(date)

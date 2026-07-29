@@ -123,6 +123,8 @@ export default defineConfig([
 						],
 						['^[./]'],
 						['^(.*)module.css$'],
+
+						['^.*/shared/.*$'],
 					],
 				},
 			],
@@ -191,6 +193,8 @@ export default defineConfig([
 						['^.*/initialization\\.interfaces/.*$'],
 
 						['^\\.'],
+
+						['^.*/shared/.*$'],
 					],
 				},
 			],

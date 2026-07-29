@@ -10,9 +10,12 @@ import {
 
 import { type ContextName } from '../../constants/context.ts';
 
+import { assertNever } from '../../../shared/utils/assert-never.ts';
+
 /**
- * Returns the FontAwesome icon corresponding to a given context name.
- * @param contextName
+ * Selects a FontAwesome icon for the specified context.
+ * @param contextName The context used to determine the corresponding icon.
+ * @returns The FontAwesome icon definition associated with the context.
  */
 export default function select(contextName: ContextName): IconDefinition {
 	switch (contextName) {
@@ -28,5 +31,7 @@ export default function select(contextName: ContextName): IconDefinition {
 			return faCircleCheck;
 		case 'Tags':
 			return faTags;
+		default:
+			return assertNever(contextName);
 	}
 }

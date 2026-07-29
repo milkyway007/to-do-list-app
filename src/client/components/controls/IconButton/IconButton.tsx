@@ -14,18 +14,12 @@ export interface IconButtonProps {
 }
 
 /**
- * IconButton
- * A reusable button that displays an icon (from FontAwesome) and optional text.
- * @param root0
- * @param root0.contextName
- * @param root0.className
- * @param root0.isActive
+ * Renders a button with an icon and label for a task context.
+ * @param props Component properties.
+ * @returns The rendered icon button component.
  */
-export function IconButton({
-	contextName,
-	className,
-	isActive,
-}: IconButtonProps) {
+export function IconButton(props: IconButtonProps) {
+	const { contextName, className, isActive } = props;
 	return (
 		<button
 			type="button"

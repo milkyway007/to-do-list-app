@@ -11,12 +11,12 @@ interface AddDayTaskFormProps {
 type EditableTaskField = 'title' | 'description';
 
 /**
- * AddDayTaskForm
- * Allows creating a new day task with title and description.
- * @param root0
- * @param root0.toggleIsAdding
+ * Renders a form for creating a new task.
+ * @param props Component properties.
+ * @returns The rendered day task form component.
  */
-export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
+export function AddDayTaskForm(props: AddDayTaskFormProps) {
+	const { toggleIsAdding } = props;
 	const [enteredTask, setEnteredTask] = useState<TaskViewModel>({
 		id: '',
 		title: '',
@@ -24,8 +24,8 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 	});
 
 	/**
-	 * Handles task form submission and closes the add task dialog.
-	 * @param event
+	 * Handles submission of the add task form.
+	 * @param event The form submission event.
 	 */
 	function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -36,9 +36,9 @@ export function AddDayTaskForm({ toggleIsAdding }: AddDayTaskFormProps) {
 	}
 
 	/**
-	 * Updates the corresponding task property with the value entered by the user.
-	 * @param identifier
-	 * @param event
+	 * Updates the specified task field with the user's input.
+	 * @param identifier The task field to update.
+	 * @param event The input change event.
 	 */
 	function handleInputChange(
 		identifier: EditableTaskField,
