@@ -1,24 +1,15 @@
 import { type Request, type Response } from 'express';
 
-import { type Mediator } from '../../../application/mediator/mediator.ts';
 import { GetTaskListQuery } from '../../../application/tasks/queries/get-task-list.query.ts';
 
 import { TaskResponseDTO } from '../../dtos/task/task-response.dto.ts';
 
+import { BaseApiController } from './base-api.controller.ts';
+
 /**
  * Handles HTTP requests related to tasks.
  */
-export class TaskController {
-	private readonly mediator: Mediator;
-
-	/**
-	 * Creates a new task controller.
-	 * @param mediator The mediator used to dispatch application requests.
-	 */
-	constructor(mediator: Mediator) {
-		this.mediator = mediator;
-	}
-
+export class TaskController extends BaseApiController {
 	/**
 	 * Handles a request to retrieve all tasks.
 	 * @param _ Unused HTTP request object.
