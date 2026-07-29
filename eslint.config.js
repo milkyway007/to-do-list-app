@@ -154,6 +154,7 @@ export default defineConfig([
 						//api project
 						['^.*/constants/.*$'],
 						['^.*/dtos/.*$'],
+						['^.*/error-types/.*$'],
 						['^.*/infrastructure/.*$'],
 						['^.*/middlewares/.*$'],
 						['^.*/utils/.*$'],
@@ -201,6 +202,12 @@ export default defineConfig([
 					allowNumber: true,
 				},
 			],
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{
+					argsIgnorePattern: '^_',
+				},
+			]
 		},
 	},
 	{

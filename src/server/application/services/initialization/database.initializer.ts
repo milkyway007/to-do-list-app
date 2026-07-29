@@ -3,16 +3,16 @@ import { type ISettingRepository } from '../../../domain.interfaces/repositories
 import { TaskInitializer } from './task.initializer.ts';
 
 /**
- *
+ * Initializes the database with required application data.
  */
 export class DatabaseInitializer {
 	private readonly settingRepository: ISettingRepository;
 	private readonly taskInitializer: TaskInitializer;
 
 	/**
-	 *
-	 * @param settingRepository
-	 * @param taskInitializer
+	 * Creates a new database initializer.
+	 * @param settingRepository The repository used to track database initialization status.
+	 * @param taskInitializer The initializer used to create default tasks.
 	 */
 	constructor(
 		settingRepository: ISettingRepository,
@@ -23,7 +23,8 @@ export class DatabaseInitializer {
 	}
 
 	/**
-	 *
+	 * Initializes the database if it has not been initialized yet.
+	 * @returns A promise that resolves when the initialization is completed.
 	 */
 	public async run(): Promise<void> {
 		if (await this.settingRepository.isInitialized()) {

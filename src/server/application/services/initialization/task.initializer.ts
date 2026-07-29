@@ -3,21 +3,22 @@ import { type ITaskRepository } from '../../../domain.interfaces/repositories.in
 import { defaultTasks } from './task.seed.ts';
 
 /**
- *
+ * Initializes the application with default tasks.
  */
 export class TaskInitializer {
 	private readonly taskRepository: ITaskRepository;
 
 	/**
-	 *
-	 * @param taskRepository
+	 * Creates a new task initializer.
+	 * @param taskRepository The repository used to store and retrieve tasks.
 	 */
 	constructor(taskRepository: ITaskRepository) {
 		this.taskRepository = taskRepository;
 	}
 
 	/**
-	 *
+	 * Inserts default tasks if no tasks exist.
+	 * @returns A promise that resolves when the initialization is completed.
 	 */
 	public async run(): Promise<void> {
 		if (await this.taskRepository.exists()) {

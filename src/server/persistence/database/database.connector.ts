@@ -3,23 +3,24 @@ import mongoose from 'mongoose';
 import { registerMongoEvents } from './mongoose.events.ts';
 
 /**
- *
+ * Provides functionality for establishing a connection to the MongoDB database.
  */
 export class DatabaseConnector {
 	private readonly connectionString: string;
 
 	/**
-	 *
-	 * @param connectionString
+	 * Creates a new database connector.
+	 * @param connectionString The MongoDB connection string.
 	 */
 	constructor(connectionString: string) {
 		this.connectionString = connectionString;
 	}
 
 	/**
-	 *
+	 * Establishes a connection to the MongoDB database.
+	 * @returns A promise that resolves when the database connection is established.
 	 */
-	async run() {
+	async connect() {
 		try {
 			registerMongoEvents();
 

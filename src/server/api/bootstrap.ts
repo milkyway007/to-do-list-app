@@ -11,18 +11,22 @@ import { MongoTaskRepository } from '../persistence/repositories/mongo/mongo.tas
 import { MONGODB_URI, PORT } from './constants/constants.ts';
 
 import { TaskController } from './infrastructure/controllers/task.controller.ts';
-import { RouteRegistrator } from './infrastructure/routes/route.registrator.ts';
-import { ServeRunner } from './infrastructure/server.runner.ts';
+import { ExpressServerBuilder } from './infrastructure/express-server.builder.ts';
+import { RouteRegistrar } from './infrastructure/routes/route.registrar.ts';
 
 import { errorHandler } from './middlewares/error.middleware.ts';
 
 /**
+ * Initializes and starts the application.
  *
+ * Establishes the database connection, initializes required data,
+ * configures dependencies, registers routes, and starts the server.
+ * @returns A promise that resolves when the application is started.
  */
 export async function bootstrap() {
 	//database connection
 	const databaseConnector = new DatabaseConnector(MONGODB_URI);
-	await databaseConnector.run();
+	await databaseConnector.connect();
 
 	//repositories
 	const taskRepository = new MongoTaskRepository();
@@ -42,10 +46,10 @@ export async function bootstrap() {
 	//controllers
 	const taskController = new TaskController(getAllTasksUseCase);
 
-	const app = new ServeRunner().run();
+	const app = new ExpressServerBuilder().build();
 
 	// routes
-	new RouteRegistrator(app, { taskController }).register();
+	new RouteRegistrar(app, { taskController }).register();
 
 	app.use(errorHandler);
 

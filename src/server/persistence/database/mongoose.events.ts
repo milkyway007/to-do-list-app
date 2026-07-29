@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 /**
- *
+ * Registers event listeners for MongoDB connection lifecycle events.
  */
 export function registerMongoEvents() {
 	mongoose.connection.on('connected', () =>

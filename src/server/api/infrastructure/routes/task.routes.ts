@@ -5,8 +5,9 @@ import { asyncHandler } from '../../utils/async-handler.ts';
 import { TaskController } from '../controllers/task.controller.ts';
 
 /**
- *
- * @param taskController
+ * Creates and configures an Express router for task endpoints.
+ * @param taskController The task controller used to handle incoming requests.
+ * @returns An Express router with registered task routes.
  */
 export function createTaskRouter(taskController: TaskController) {
 	const router: Router = express.Router();
