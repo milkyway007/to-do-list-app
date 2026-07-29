@@ -18,6 +18,6 @@ export class TaskController extends BaseApiController {
 	public async getAll(_: Request, res: Response): Promise<void> {
 		const tasks = await this.mediator.send(new GetTaskListQuery());
 
-		res.json(tasks.map(TaskResponseDTO.fromDomain));
+		res.status(200).json({tasks: tasks.map(TaskResponseDTO.fromDomain)});
 	}
 }

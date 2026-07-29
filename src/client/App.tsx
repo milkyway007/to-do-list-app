@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import { IconButton } from './components/controls/IconButton/IconButton.tsx';
 import { ContentWrapper } from './components/layout/ContentWrapper/ContentWrapper.tsx';
@@ -17,6 +17,7 @@ import { type TaskListViewModel } from './model/view-model/task-list.view-model.
 import { isContextWithTaskList } from './services/context/context-with-task-list.validator.ts';
 
 import './App.css';
+import type { TaskViewModel } from './model/view-model/task.view-model.ts';
 
 /**
  * Renders the main application component.
@@ -26,6 +27,25 @@ import './App.css';
 export function App() {
 	const [selectedContextName, setSelectedContextName] =
 		useState<ContextName>('Today');
+
+	const [isFetching, setIsFetching] = useState<boolean>(false);
+	const [tasks, setTasks] = useState<TaskViewModel[]>([]);
+	const url = 'http://localhost:3000/api/tasks';
+	useEffect(() => {
+		async function fetchTasksAsync() {
+			setIsFetching(true);
+
+			const response = await fetch(url);
+			const resData = await response.json();
+			setTasks(resData.tasks);
+			console.log(resData.tasks);
+
+			setIsFetching(false);
+		}
+
+		fetchTasksAsync();
+	}, []);
+		
 
 	/**
 	 * Handles selection of a task context from the vertical menu.
@@ -106,7 +126,7 @@ export function App() {
 				</VerticalMenu>
 			</div>
 			<div className="column">
-				<ContentWrapper>{currentContext}</ContentWrapper>
+				<ContentWrapper isLoading={isFetching} loadingText='Fetching task data'>{currentContext}</ContentWrapper>
 			</div>
 		</div>
 	);
