@@ -1,8 +1,9 @@
 import ViteExpress from 'vite-express';
 
+import { registerApplicationHandlers } from '../application/mediator/mediator.registration.ts';
+import { Mediator } from '../application/mediator/mediator.ts';
 import { DatabaseInitializer } from '../application/services/initialization/database.initializer.ts';
 import { TaskInitializer } from '../application/services/initialization/task.initializer.ts';
-import { GetAllTasksUseCase } from '../application/use-cases/task/get-all-tasks.use-case.ts';
 
 import { DatabaseConnector } from '../persistence/database/database.connector.ts';
 import { MongoSettingRepository } from '../persistence/repositories/mongo/mongo.setting.repository.ts';
@@ -40,11 +41,12 @@ export async function bootstrap() {
 	);
 	await databaseInitializer.run();
 
-	//use cases
-	const getAllTasksUseCase = new GetAllTasksUseCase(taskRepository);
+	const mediator = new Mediator();
+
+	registerApplicationHandlers(mediator, taskRepository);
 
 	//controllers
-	const taskController = new TaskController(getAllTasksUseCase);
+	const taskController = new TaskController(mediator);
 
 	const app = new ExpressServerBuilder().build();
 

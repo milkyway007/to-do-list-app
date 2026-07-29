@@ -2,14 +2,21 @@ import { type Task } from '../../../domain/task.entity.ts';
 
 import { type ITaskRepository } from '../../../domain.interfaces/repositories.interfaces/task.repository.interface.ts';
 
+import { type IRequestHandler } from '../../mediator/request-handler.ts';
+
+import { type GetTaskListQuery } from './get-task-list.query.ts';
+
 /**
- * Handles the use case of retrieving all tasks.
+ * Handles retrieving all tasks from the repository.
  */
-export class GetAllTasksUseCase {
+export class GetTaskListHandler implements IRequestHandler<
+	GetTaskListQuery,
+	Task[]
+> {
 	private readonly taskRepository: ITaskRepository;
 
 	/**
-	 * Creates a new get all tasks use case.
+	 * Creates a new task list query handler.
 	 * @param taskRepository The repository used to retrieve tasks.
 	 */
 	constructor(taskRepository: ITaskRepository) {
@@ -17,10 +24,10 @@ export class GetAllTasksUseCase {
 	}
 
 	/**
-	 * Retrieves all tasks from the repository.
-	 * @returns A list of all tasks.
+	 * Executes the task list query.
+	 * @returns A list of tasks.
 	 */
-	async execute(): Promise<Task[]> {
+	async handle(): Promise<Task[]> {
 		return this.taskRepository.getAll();
 	}
 }

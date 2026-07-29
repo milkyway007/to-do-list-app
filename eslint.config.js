@@ -161,8 +161,9 @@ export default defineConfig([
 						
 						//application project
 						['^.*/inputs/.*$'],
+						['^.*/mediator/.*$'],
 						['^.*/services/.*$'],
-						['^.*/use-cases/.*$'],
+						['^.*/tasks/.*$'],
 
 						//domain project
 						['^.*/repositories\\.interfaces/.*$'],
@@ -182,6 +183,9 @@ export default defineConfig([
 
 						//application project/services folder/initialization folder
 						['^.*/initialization/(?!interfaces/).*$'],
+
+						//application project/tasks folder/queries folder
+						['^.*/queries/.*$'],
 
 						//persistence.interfaces project/initialization folder
 						['^.*/initialization\\.interfaces/.*$'],
