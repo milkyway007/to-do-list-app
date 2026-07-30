@@ -1,24 +1,21 @@
 import { type ReactNode, useEffect, useState } from 'react';
 
 import { IconButton } from './components/controls/IconButton/IconButton.tsx';
+import { Modal } from './components/controls/Modal/Modal.tsx';
 import { ContentWrapper } from './components/layout/ContentWrapper/ContentWrapper.tsx';
 import { DayTaskList } from './components/layout/DayTaskListContainer/DayTaskListContainer.tsx';
 import { VerticalMenu } from './components/layout/VerticalMenu/VerticalMenu.tsx';
 
-import { type ContextName, contexts } from './constants/context.ts';
+import { type ContextName } from './constants/context.ts';
 import { CONTEXT_CONFIG } from './constants/context-config.ts';
 import { verticalMenuButtons } from './constants/vertical-menu.ts';
 
 import { type VerticalMenuButtonProps } from './model/ui/vertical-menu-button.ts';
-import { type ContextViewModel } from './model/view-model/context.view-model.ts';
-import { type DayWithTaskViewModel } from './model/view-model/day-with-task.view-model.ts';
-import { type TaskViewModel } from './model/view-model/task.view-model.ts';
-import { type TaskListViewModel } from './model/view-model/task-list.view-model.ts';
+import { type TaskDayViewModel } from './model/view-model/task-day.view-model.ts';
 
-import { isContextWithTaskList } from './services/context/context-with-task-list.validator.ts';
+import { TaskDayMapper } from './services/mappers/task-day.mapper.ts';
 
 import './App.css';
-import { Modal } from './components/controls/Modal/Modal.tsx';
 
 /**
  * Renders the main application component.
@@ -30,31 +27,29 @@ export function App() {
 		useState<ContextName>('Today');
 
 	const [isFetching, setIsFetching] = useState<boolean>(false);
-	const [tasks, setTasks] = useState<TaskViewModel[]>([]);
+	const [tasks, setTasks] = useState<TaskDayViewModel[]>([]);
 	const [error, setError] = useState<Error | null>(null);
 
-	const url = 'http://localhost:3000/api/tasksss';
+	const url = 'http://localhost:3000/api/tasks';
 	useEffect(() => {
 		async function fetchTasksAsync() {
 			setIsFetching(true);
 
-			try 
-			{
+			try {
 				const response = await fetch(url);
 				const resData = await response.json();
 				if (!response.ok) {
-					throw new Error('Failed to fetch tasks.')
+					throw new Error('Failed to fetch tasks.');
 				}
 
-				setTasks(resData.tasks);
-				console.log(resData.tasks);
-			}
-			catch (error)
-			{
+				const viewModels = TaskDayMapper.toViewModels(resData.tasks);
+
+				setTasks(viewModels);
+			} catch (error) {
 				if (error instanceof Error) {
 					setError(error);
 				} else {
-					setError(new Error("Unknown error"));
+					setError(new Error('Unknown error'));
 				}
 			}
 
@@ -75,12 +70,13 @@ export function App() {
 	/**
 	 * Creates the layout for the specified task context.
 	 * @param name The name of the selected context.
-	 * @param taskList The task list associated with the selected context.
+	 * @param taskDay The task list associated with the selected context.
+	 * @param taskDays
 	 * @returns The rendered context layout.
 	 */
 	function getCurrentContextLayout(
 		name: ContextName,
-		taskList: TaskListViewModel,
+		taskDays: TaskDayViewModel[],
 	): ReactNode {
 		return (
 			<div className="content block task-list-container">
@@ -88,12 +84,12 @@ export function App() {
 					<h2 className="header mb-5">{CONTEXT_CONFIG[name].label}</h2>
 				</div>
 				<div className="task-list-body">
-					{taskList.days.length > 0 && (
+					{taskDays.length > 0 && (
 						<ul>
-							{taskList.days.map((day: DayWithTaskViewModel) => {
+							{taskDays.map((taskDay: TaskDayViewModel) => {
 								return (
-									<li key={day.id}>
-										<DayTaskList day={day} />
+									<li key={taskDay.id}>
+										<DayTaskList day={taskDay} />
 									</li>
 								);
 							})}
@@ -104,21 +100,14 @@ export function App() {
 		);
 	}
 
-	const selectedContext: ContextViewModel | undefined = contexts.find(
-		(x) => x.name === selectedContextName,
-	);
-
 	let currentContext = undefined;
-	if (selectedContext && isContextWithTaskList(selectedContext)) {
-		currentContext = getCurrentContextLayout(
-			selectedContextName,
-			selectedContext.taskList,
-		);
+	if (selectedContextName && CONTEXT_CONFIG[selectedContextName].hasTaskList) {
+		currentContext = getCurrentContextLayout(selectedContextName, tasks);
 	}
 
 	function handleModalClose() {
-        setError(null);
-    }
+		setError(null);
+	}
 
 	return (
 		<div
@@ -127,15 +116,15 @@ export function App() {
 		>
 			<Modal
 				isOpened={error !== null}
-				title='An error occured'
+				title="An error occured"
 				message={
 					<>
 						<strong>Error:</strong>
 						<p>{error?.message}</p>
 					</>
 				}
-				onClose={handleModalClose} >
-			</Modal>
+				onClose={handleModalClose}
+			></Modal>
 
 			<div className="column is-2 has-background-white-bis">
 				<VerticalMenu>
@@ -159,11 +148,7 @@ export function App() {
 				</VerticalMenu>
 			</div>
 			<div className="column">
-				<ContentWrapper
-					isLoading={isFetching}
-				>
-					{currentContext}
-				</ContentWrapper>
+				<ContentWrapper isLoading={isFetching}>{currentContext}</ContentWrapper>
 			</div>
 		</div>
 	);

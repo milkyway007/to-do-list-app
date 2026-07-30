@@ -1,19 +1,21 @@
 import { type Task } from '../../../domain/task.entity.ts';
 
+import { type TaskResponse } from '../../../../shared/contracts/task.contract.ts';
+
 /**
  * Represents a task response returned by the API.
  */
-export class TaskResponseDTO {
+export class TaskResponseDTO implements TaskResponse {
 	public id: string;
 	public title: string;
 	public description?: string;
-	public deadline: Date;
+	public deadline: string;
 
 	private constructor(
 		id: string,
 		title: string,
 		description: string | undefined,
-		deadline: Date,
+		deadline: string,
 	) {
 		this.id = id;
 		this.title = title;
@@ -31,7 +33,7 @@ export class TaskResponseDTO {
 			task.id,
 			task.title,
 			task.description,
-			task.deadline,
+			task.deadline.toDateString(),
 		);
 	}
 }
