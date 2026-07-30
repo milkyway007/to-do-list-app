@@ -11,7 +11,7 @@ export class TaskMapper {
 	 * @param task Task response DTO.
 	 * @returns Task view model.
 	 */
-	static toViewModel(task: TaskResponse): TaskViewModel {
+	static toViewModel(this: void, task: TaskResponse): TaskViewModel {
 		return {
 			id: task.id,
 			title: task.title,

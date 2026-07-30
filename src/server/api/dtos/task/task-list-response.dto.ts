@@ -2,10 +2,12 @@ import { type Task } from '../../../domain/task.entity.ts';
 
 import { TaskResponseDTO } from './task-response.dto.ts';
 
+import { type TaskListResponse } from '../../../../shared/contracts/task-list.contract.ts';
+
 /**
  * Represents a task list response returned by the API.
  */
-export class TaskListResponseDTO {
+export class TaskListResponseDTO implements TaskListResponse {
 	public tasks: TaskResponseDTO[];
 
 	private constructor(tasks: TaskResponseDTO[]) {

@@ -1,9 +1,9 @@
-import { type ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IconButton } from './components/controls/IconButton/IconButton.tsx';
 import { Modal } from './components/controls/Modal/Modal.tsx';
 import { ContentWrapper } from './components/layout/ContentWrapper/ContentWrapper.tsx';
-import { DayTaskList } from './components/layout/DayTaskListContainer/DayTaskListContainer.tsx';
+import { TaskContextView } from './components/layout/TaskContextView/TaskContextView.tsx';
 import { VerticalMenu } from './components/layout/VerticalMenu/VerticalMenu.tsx';
 
 import { type ContextName } from './constants/context.ts';
@@ -14,6 +14,8 @@ import { type VerticalMenuButtonProps } from './model/ui/vertical-menu-button.ts
 import { type TaskDayViewModel } from './model/view-model/task-day.view-model.ts';
 
 import { TaskDayMapper } from './services/mappers/task-day.mapper.ts';
+
+import { type TaskListResponse } from '../shared/contracts/task-list.contract.ts';
 
 import './App.css';
 
@@ -30,14 +32,13 @@ export function App() {
 	const [tasks, setTasks] = useState<TaskDayViewModel[]>([]);
 	const [error, setError] = useState<Error | null>(null);
 
-	const url = 'http://localhost:3000/api/tasks';
 	useEffect(() => {
 		async function fetchTasksAsync() {
 			setIsFetching(true);
 
 			try {
-				const response = await fetch(url);
-				const resData = await response.json();
+				const response = await fetch('http://localhost:3000/api/tasks');
+				const resData = (await response.json()) as TaskListResponse;
 				if (!response.ok) {
 					throw new Error('Failed to fetch tasks.');
 				}
@@ -51,12 +52,12 @@ export function App() {
 				} else {
 					setError(new Error('Unknown error'));
 				}
+			} finally {
+				setIsFetching(false);
 			}
-
-			setIsFetching(false);
 		}
 
-		fetchTasksAsync();
+		void fetchTasksAsync();
 	}, []);
 
 	/**
@@ -65,44 +66,6 @@ export function App() {
 	 */
 	function onVerticalMenuButtonClicked(contextName: ContextName): void {
 		setSelectedContextName(contextName);
-	}
-
-	/**
-	 * Creates the layout for the specified task context.
-	 * @param name The name of the selected context.
-	 * @param taskDay The task list associated with the selected context.
-	 * @param taskDays
-	 * @returns The rendered context layout.
-	 */
-	function getCurrentContextLayout(
-		name: ContextName,
-		taskDays: TaskDayViewModel[],
-	): ReactNode {
-		return (
-			<div className="content block task-list-container">
-				<div className="task-list-header">
-					<h2 className="header mb-5">{CONTEXT_CONFIG[name].label}</h2>
-				</div>
-				<div className="task-list-body">
-					{taskDays.length > 0 && (
-						<ul>
-							{taskDays.map((taskDay: TaskDayViewModel) => {
-								return (
-									<li key={taskDay.id}>
-										<DayTaskList day={taskDay} />
-									</li>
-								);
-							})}
-						</ul>
-					)}
-				</div>
-			</div>
-		);
-	}
-
-	let currentContext = undefined;
-	if (selectedContextName && CONTEXT_CONFIG[selectedContextName].hasTaskList) {
-		currentContext = getCurrentContextLayout(selectedContextName, tasks);
 	}
 
 	function handleModalClose() {
@@ -148,7 +111,15 @@ export function App() {
 				</VerticalMenu>
 			</div>
 			<div className="column">
-				<ContentWrapper isLoading={isFetching}>{currentContext}</ContentWrapper>
+				<ContentWrapper isLoading={isFetching}>
+					{selectedContextName &&
+						CONTEXT_CONFIG[selectedContextName].hasTaskList && (
+							<TaskContextView
+								name={selectedContextName}
+								taskDays={tasks}
+							/>
+						)}
+				</ContentWrapper>
 			</div>
 		</div>
 	);
