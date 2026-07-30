@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { App } from './App.tsx';
+import './app/layout/styles.css';
+import { App } from './app/layout/App.tsx';
 
-import './index.css';
 import 'bulma/css/bulma.css';
 
 const root = document.getElementById('root');
