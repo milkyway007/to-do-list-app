@@ -18,6 +18,7 @@ import { type TaskListViewModel } from './model/view-model/task-list.view-model.
 import { isContextWithTaskList } from './services/context/context-with-task-list.validator.ts';
 
 import './App.css';
+import { Modal } from './components/controls/Modal/Modal.tsx';
 
 /**
  * Renders the main application component.
@@ -30,15 +31,32 @@ export function App() {
 
 	const [isFetching, setIsFetching] = useState<boolean>(false);
 	const [tasks, setTasks] = useState<TaskViewModel[]>([]);
-	const url = 'http://localhost:3000/api/tasks';
+	const [error, setError] = useState<Error | null>(null);
+
+	const url = 'http://localhost:3000/api/tasksss';
 	useEffect(() => {
 		async function fetchTasksAsync() {
 			setIsFetching(true);
 
-			const response = await fetch(url);
-			const resData = await response.json();
-			setTasks(resData.tasks);
-			console.log(resData.tasks);
+			try 
+			{
+				const response = await fetch(url);
+				const resData = await response.json();
+				if (!response.ok) {
+					throw new Error('Failed to fetch tasks.')
+				}
+
+				setTasks(resData.tasks);
+				console.log(resData.tasks);
+			}
+			catch (error)
+			{
+				if (error instanceof Error) {
+					setError(error);
+				} else {
+					setError(new Error("Unknown error"));
+				}
+			}
 
 			setIsFetching(false);
 		}
@@ -98,11 +116,27 @@ export function App() {
 		);
 	}
 
+	function handleModalClose() {
+        setError(null);
+    }
+
 	return (
 		<div
 			id="app"
 			className="columns"
 		>
+			<Modal
+				isOpened={error !== null}
+				title='An error occured'
+				message={
+					<>
+						<strong>Error:</strong>
+						<p>{error?.message}</p>
+					</>
+				}
+				onClose={handleModalClose} >
+			</Modal>
+
 			<div className="column is-2 has-background-white-bis">
 				<VerticalMenu>
 					<ol className="menu-list">
