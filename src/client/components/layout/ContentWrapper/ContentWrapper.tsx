@@ -10,11 +10,7 @@ interface ContentWrapperProps {
  * @returns The rendered content wrapper component.
  */
 export function ContentWrapper(props: ContentWrapperProps) {
-	const {
-		children,
-		isLoading,
-		loadingText,
-	} = props;
+	const { children, isLoading, loadingText } = props;
 
 	return (
 		<div className="columns">

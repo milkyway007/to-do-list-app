@@ -12,12 +12,12 @@ import { verticalMenuButtons } from './constants/vertical-menu.ts';
 import { type VerticalMenuButtonProps } from './model/ui/vertical-menu-button.ts';
 import { type ContextViewModel } from './model/view-model/context.view-model.ts';
 import { type DayWithTaskViewModel } from './model/view-model/day-with-task.view-model.ts';
+import { type TaskViewModel } from './model/view-model/task.view-model.ts';
 import { type TaskListViewModel } from './model/view-model/task-list.view-model.ts';
 
 import { isContextWithTaskList } from './services/context/context-with-task-list.validator.ts';
 
 import './App.css';
-import type { TaskViewModel } from './model/view-model/task.view-model.ts';
 
 /**
  * Renders the main application component.
@@ -45,7 +45,6 @@ export function App() {
 
 		fetchTasksAsync();
 	}, []);
-		
 
 	/**
 	 * Handles selection of a task context from the vertical menu.
@@ -126,7 +125,12 @@ export function App() {
 				</VerticalMenu>
 			</div>
 			<div className="column">
-				<ContentWrapper isLoading={isFetching} loadingText='Fetching task data'>{currentContext}</ContentWrapper>
+				<ContentWrapper
+					isLoading={isFetching}
+					loadingText="Fetching task data"
+				>
+					{currentContext}
+				</ContentWrapper>
 			</div>
 		</div>
 	);
