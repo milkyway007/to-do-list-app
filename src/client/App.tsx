@@ -127,7 +127,6 @@ export function App() {
 			<div className="column">
 				<ContentWrapper
 					isLoading={isFetching}
-					loadingText="Fetching task data"
 				>
 					{currentContext}
 				</ContentWrapper>
