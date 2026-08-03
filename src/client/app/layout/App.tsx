@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 import { TaskContextView } from '../../features/tasks/components/TaskContextView/TaskContextView.tsx';
 import { IconButton } from '../components/IconButton/IconButton.tsx';
 import { Modal } from '../components/Modal/Modal.tsx';
 import { VerticalMenu } from '../components/VerticalMenu/VerticalMenu.tsx';
-
-import { type TaskDayViewModel } from '../../features/tasks/model/task-day.view-model.ts';
 
 import { type TaskListResponse } from '../../../shared/contracts/task-list.contract.ts';
 import {
@@ -28,35 +27,20 @@ export function App() {
 	const [selectedContextName, setSelectedContextName] =
 		useState<TaskContextName>('Today');
 
-	const [isFetching, setIsFetching] = useState<boolean>(false);
-	const [tasks, setTasks] = useState<TaskDayViewModel[]>([]);
 	const [error, setError] = useState<Error | null>(null);
 
-	useEffect(() => {
-		async function fetchTasksAsync() {
-			setIsFetching(true);
+	const { data: tasks, isPending } = useQuery({
+		queryKey: ['tasks'],
+		queryFn: async () => {
+			const response = await axios.get<TaskListResponse>(
+				'http://localhost:3000/api/tasks',
+			);
 
-			try {
-				const response = await axios.get<TaskListResponse>(
-					'http://localhost:3000/api/tasks',
-				);
+			const viewModels = TaskDayMapper.toViewModels(response.data.tasks);
 
-				const viewModels = TaskDayMapper.toViewModels(response.data.tasks);
-
-				setTasks(viewModels);
-			} catch (error) {
-				if (error instanceof Error) {
-					setError(error);
-				} else {
-					setError(new Error('Unknown error'));
-				}
-			} finally {
-				setIsFetching(false);
-			}
-		}
-
-		void fetchTasksAsync();
-	}, []);
+			return viewModels;
+		},
+	});
 
 	/**
 	 * Handles selection of a task context from the vertical menu.
@@ -110,8 +94,10 @@ export function App() {
 				</VerticalMenu>
 			</div>
 			<div className="column">
-				<ContentWrapper isLoading={isFetching}>
-					{selectedContextName &&
+				<ContentWrapper isLoading={isPending}>
+					{tasks &&
+						!isPending &&
+						selectedContextName &&
 						TASK_CONTEXT_CONFIG[selectedContextName].hasTaskList && (
 							<TaskContextView
 								name={selectedContextName}
