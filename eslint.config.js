@@ -106,6 +106,7 @@ export default defineConfig([
 
 						['^.*/app/.*$'],
 						['^.*/features/.*$'],
+						['^.*/lib/.*$'],
 
 						['^.*/components/.*$'],
 						['^.*/layout/.*$'],
@@ -117,6 +118,8 @@ export default defineConfig([
 						['^.*/config/.*$'],
 						['^.*/mappers/.*$'],
 						['^.*/model/.*$'],
+
+						['^.*/hooks/.*$'],
 
 						['^[./]'],
 						['^(.*).css$'],

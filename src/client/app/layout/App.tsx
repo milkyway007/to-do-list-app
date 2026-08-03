@@ -1,18 +1,13 @@
 import { useState } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
-
-import axios from 'axios';
-
-import { type TaskListResponse } from '../../../shared/contracts/task-list.contract.ts';
-
 import { TaskContextView } from '../../features/tasks/components/TaskContextView/TaskContextView.tsx';
 import {
 	TASK_CONTEXT_CONFIG,
 	type TaskContextName,
 } from '../../features/tasks/config/task-context.config.ts';
 import { TASK_CONTEXT_MENU_ORDER } from '../../features/tasks/config/task-context-menu.config.ts';
-import { TaskDayMapper } from '../../features/tasks/mappers/task-day.mapper.ts';
+
+import { useTasks } from '../../lib/hooks/useTasks.ts';
 
 import { IconButton } from '../components/IconButton/IconButton.tsx';
 import { Modal } from '../components/Modal/Modal.tsx';
@@ -30,21 +25,9 @@ import './styles.css';
 export function App() {
 	const [selectedContextName, setSelectedContextName] =
 		useState<TaskContextName>('Today');
-
 	const [error, setError] = useState<Error | null>(null);
 
-	const { data: tasks, isPending } = useQuery({
-		queryKey: ['tasks'],
-		queryFn: async () => {
-			const response = await axios.get<TaskListResponse>(
-				'http://localhost:3000/api/tasks',
-			);
-
-			const viewModels = TaskDayMapper.toViewModels(response.data.tasks);
-
-			return viewModels;
-		},
-	});
+	const { tasks, isPending } = useTasks();
 
 	/**
 	 * Handles selection of a task context from the vertical menu.
