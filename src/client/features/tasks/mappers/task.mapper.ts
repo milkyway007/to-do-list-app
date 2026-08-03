@@ -1,6 +1,6 @@
-import { type TaskViewModel } from '../model/task.view-model.ts';
-
 import { type TaskResponse } from '../../../../shared/contracts/task.contract.ts';
+
+import { type TaskViewModel } from '../model/task.view-model.ts';
 
 /**
  * Maps task response DTOs to task view models.

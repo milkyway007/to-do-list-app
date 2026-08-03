@@ -1,9 +1,10 @@
-import { type TaskDayViewModel } from '../../model/task-day.view-model.ts';
-
 import {
 	TASK_CONTEXT_CONFIG,
 	type TaskContextName,
 } from '../../config/task-context.config.ts';
+
+import { type TaskDayViewModel } from '../../model/task-day.view-model.ts';
+
 import { TaskDay } from '../TaskDay/TaskDay.tsx';
 
 interface TaskContextViewProps {

@@ -1,6 +1,6 @@
-import { type Task } from '../../../domain/task.entity.ts';
-
 import { type TaskResponse } from '../../../../shared/contracts/task.contract.ts';
+
+import { type Task } from '../../../domain/task.entity.ts';
 
 /**
  * Represents a task response returned by the API.

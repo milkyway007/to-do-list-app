@@ -1,6 +1,7 @@
+import { type TaskResponse } from '../../../../shared/contracts/task.contract.ts';
+
 import { type TaskDayViewModel } from '../model/task-day.view-model.ts';
 
-import { type TaskResponse } from '../../../../shared/contracts/task.contract.ts';
 import { TaskMapper } from './task.mapper.ts';
 
 /**

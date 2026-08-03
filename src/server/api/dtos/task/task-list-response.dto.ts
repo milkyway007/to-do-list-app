@@ -1,8 +1,8 @@
+import { type TaskListResponse } from '../../../../shared/contracts/task-list.contract.ts';
+
 import { type Task } from '../../../domain/task.entity.ts';
 
 import { TaskResponseDTO } from './task-response.dto.ts';
-
-import { type TaskListResponse } from '../../../../shared/contracts/task-list.contract.ts';
 
 /**
  * Represents a task list response returned by the API.

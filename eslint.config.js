@@ -96,35 +96,30 @@ export default defineConfig([
 				'error',
 				{
 					groups: [
-						['^react', '^@?\\w'],
-						['^bulma/(.*)$'],
-						['^@fortawesome/(.*)$'],
-
-						['^.*/assets/.*$'],
-
-						['^.*/components/.*$'],
-						['^.*/controls/.*$'],
-						['^.*/layout/.*$'],
-
-						['^.*/constants/.*$'],
-
-						['^.*/model/.*$'],
-						['^.*/ui/.*$'],
-						['^.*/view-model/.*$'],
-
-
-						['^.*/services/.*$'],
-						['^.*/context/.*$'],
-						['^.*/date-time/.*$'],
-						['^.*/icons/.*$'],
-
-						[
-							'^(?!.*(assets|components|constants|model|services|module.css).*)[./].*',
-						],
-						['^[./]'],
-						['^(.*)module.css$'],
+						['^react$'],
+						['^bulma'],
+						['^@fortawesome'],
+						['^@tanstack/react-query'],
+						['^axios'],
 
 						['^.*/shared/.*$'],
+
+						['^.*/app/.*$'],
+						['^.*/features/.*$'],
+
+						['^.*/components/.*$'],
+						['^.*/layout/.*$'],
+						['^.*/utils/.*$'],
+
+						['^.*/tasks/.*$'],
+
+						['^.*/api/.*$'],
+						['^.*/config/.*$'],
+						['^.*/mappers/.*$'],
+						['^.*/model/.*$'],
+
+						['^[./]'],
+						['^(.*).css$'],
 					],
 				},
 			],
@@ -144,6 +139,8 @@ export default defineConfig([
 						['^express$'],
 						['^vite-express$'],
 						['^mongoose$'],
+
+						['^.*/shared/.*$'],
 
 						//projects
 						['^.*/api/.*$'],
@@ -192,9 +189,7 @@ export default defineConfig([
 						//persistence.interfaces project/initialization folder
 						['^.*/initialization\\.interfaces/.*$'],
 
-						['^\\.'],
-
-						['^.*/shared/.*$'],
+						['^[./]'],
 					],
 				},
 			],

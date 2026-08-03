@@ -1,11 +1,13 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import './app/layout/styles.css';
 import { App } from './app/layout/App.tsx';
 
 import 'bulma/css/bulma.css';
+
+import { createRoot } from 'react-dom/client';
 
 const queryClient = new QueryClient();
 
