@@ -97,6 +97,8 @@ export default defineConfig([
 				{
 					groups: [
 						['^react$'],
+						['^react-dom$'],
+						['^react-router$'],
 						['^bulma'],
 						['^@fortawesome'],
 						['^@tanstack/react-query'],
@@ -110,6 +112,7 @@ export default defineConfig([
 
 						['^.*/components/.*$'],
 						['^.*/layout/.*$'],
+						['^.*/router/.*$'],
 						['^.*/utils/.*$'],
 
 						['^.*/tasks/.*$'],

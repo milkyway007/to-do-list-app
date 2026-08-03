@@ -1,10 +1,12 @@
 import { StrictMode } from 'react';
 
+import { RouterProvider } from 'react-router';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import './app/layout/styles.css';
-import { App } from './app/layout/App.tsx';
+import { router } from './app/router/Routes.tsx';
 
 import 'bulma/css/bulma.css';
 
@@ -18,7 +20,7 @@ createRoot(root).render(
 	<StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<ReactQueryDevtools initialIsOpen={false} />
-			<App />
+			<RouterProvider router={router} />
 		</QueryClientProvider>
 	</StrictMode>,
 );
