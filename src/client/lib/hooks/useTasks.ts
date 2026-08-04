@@ -20,6 +20,7 @@ export const useTasks = () => {
 
 			return viewModels;
 		},
+		staleTime: 1000 * 60 * 5,
 	});
 
 	return {

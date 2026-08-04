@@ -1,3 +1,5 @@
+import './Loader.css';
+
 export interface LoaderProps {
 	className?: string[];
 }
@@ -10,5 +12,9 @@ export interface LoaderProps {
 export function Loader(props: LoaderProps) {
 	const { className } = props;
 
-	return <span className={`loader ${className?.join(' ') ?? ''}`}></span>;
+	return (
+		<span
+			className={`loader custom-loader ${className?.join(' ') ?? ''}`}
+		></span>
+	);
 }

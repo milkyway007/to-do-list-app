@@ -1,3 +1,7 @@
+import { Observer } from 'mobx-react-lite';
+
+import { useStore } from '../../../lib/hooks/useStore.ts';
+
 import { Loader } from '../../components/Loader/Loader.tsx';
 
 interface ContentWrapperProps {
@@ -11,12 +15,17 @@ interface ContentWrapperProps {
  * @returns The rendered content wrapper component.
  */
 export function ContentWrapper(props: ContentWrapperProps) {
-	const { children, isLoading } = props;
+	const { children } = props;
+	const { uiStore } = useStore();
 
 	return (
 		<div className="columns">
 			<div className="column is-half is-offset-one-quarter">
-				{isLoading ? <Loader className={['mt-6']} /> : children}
+				<Observer>
+					{() =>
+						uiStore.isLoading ? <Loader className={['mt-6']} /> : children
+					}
+				</Observer>
 			</div>
 		</div>
 	);

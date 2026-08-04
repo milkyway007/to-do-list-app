@@ -97,35 +97,42 @@ export default defineConfig([
 				{
 					groups: [
 						['^react$'],
-						['^react-dom$'],
+						['^react-dom(/.*)$'],
 						['^react-router$'],
-						['^bulma'],
-						['^@fortawesome'],
-						['^@tanstack/react-query'],
-						['^axios'],
+						['^@tanstack/react-query$'],
+						['^@tanstack/react-query-devtools$'],
+						['^axios$'],
+						['^mobx$'],
+						['^mobx-react-lite(/.*)?$'],
+						['^bulma$'],
+						['^@fortawesome(/.*)?$'],
 
 						['^.*/shared/.*$'],
 
-						['^.*/app/.*$'],
+						['^.*/app/(?!.*\\.css$).*'],
 						['^.*/features/.*$'],
 						['^.*/lib/.*$'],
 
 						['^.*/components/.*$'],
-						['^.*/layout/.*$'],
+						['^.*/layout/(?!.*\\.css$).*$'],
 						['^.*/router/.*$'],
 						['^.*/utils/.*$'],
-
 						['^.*/tasks/.*$'],
-
 						['^.*/api/.*$'],
 						['^.*/config/.*$'],
 						['^.*/mappers/.*$'],
 						['^.*/model/.*$'],
 
 						['^.*/hooks/.*$'],
+						['^.*/stores/.*$'],
 
-						['^[./]'],
-						['^(.*).css$'],
+						['^[./](?!.*\\.css$)'],
+
+						['^\\u0000bulma/.*\\.css$'],
+						['^\\u0000.*/app/.*\\.css$'],
+						['^\\u0000.*/layout/.*\\.css$'],
+						['^\\u0000.+\\.css$'],
+						['^[./]\\.css']
 					],
 				},
 			],
